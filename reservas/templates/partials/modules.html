@@ -1,0 +1,51 @@
+{% load static %}
+   <!-- Data da Reserva -->
+   <div class="container text-center">
+      <div class="row">
+         <div class="col">
+         <input type="date" name="data">
+         </div>
+      </div>
+   </div>
+   
+   <!-- Periodos -->
+   <div class="container text-center">
+      <div class="row">
+         <div class="col">
+            <select name="periodo" >
+            <option selected>Selecione o Periodo</option>
+            {% for periodo in periodos %}
+               <option value="{{periodo.id}}">{{periodo.nome_periodo}}</option>
+            {% endfor %}
+            </select>
+         </div>
+      </div>
+   </div>
+         
+   <!-- Laboratórios -->
+   <div class="container text-center">
+      <div class="row">
+         <div class="col">
+            <select  name="nome_lab" id="">
+               <option selected>Selecione o Laboratório</option>
+               {% for lab in laboratorios %}
+                  <option value="{{lab.id}}">{{lab.nome}}</option>
+               {% endfor %}
+            </select>
+         </div>
+      </div>
+   </div>
+
+   <!-- Nome Professor -->
+   <div class="container text-center">
+      <div class="row">
+         <div class="col">
+            <input type="text" name='nome_professor' placeholder="Nome do professor" list='lista_professores'>
+            <datalist id='lista_professores'>
+                  {% for professor in professores %}
+                     <option value="{{professor.nome}}"></option>
+                  {% endfor %}
+            </datalist>   
+         </div>
+      </div>
+   </div>   

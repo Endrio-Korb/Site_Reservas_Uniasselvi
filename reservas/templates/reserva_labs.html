@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+   <div class="container text-center">
+      <div class="row">
+         <div class="col">
+            <form action="{% url "reservas:registrar_reserva" %}" method="POST"> {% csrf_token %}
+               <select  name="blocos" 
+               hx-get="{% url "reservas:modules" %}"
+               hx-trigger="change"
+               hx-target="#modules">
+               
+                  <option selected>Selecione o Bloco</option>
+                  {% for bloco in blocos %}
+                     <option value="{{bloco.id_bloco}}">{{bloco.bloco}}</option>
+                  {% endfor %}
+
+               </select>
+
+               <div id="modules">
+                  {% include 'partials/modules.html' %}
+               </div>
+
+               <input type="submit" value='Reservar'>
+
+            </form>
+         </div>
+      </div>
+   </div>
+   
+{% endblock content %}

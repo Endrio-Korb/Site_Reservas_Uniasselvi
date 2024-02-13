@@ -1,0 +1,61 @@
+body {
+    background-color: rgb(58, 58, 58);
+    min-height: 100vh;
+}
+
+* {
+    margin:0;
+    box-sizing: border-box;
+}
+
+/* Barra de Navegação */
+.navbar {
+    background-color: rgb(41 41 41);
+    height: 70px;
+}
+
+
+/* Links */
+.btn-nav {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: black;
+    background-color: yellow;
+    height: 50px;
+    width: 200px;
+    border-radius: 10rem;
+    border-color: white;
+    border-style: hidden;
+    font-size: 1.2em;
+}
+
+.text-center {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Botões */
+.btn {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+/*  Inputs */
+.input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

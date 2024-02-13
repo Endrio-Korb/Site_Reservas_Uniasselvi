@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    {% if labs_reservados %}
+        <div class="container text-center">
+            <div class="row">
+                <div class="col">
+                    <form action="{% url 'reservas:reservar_laboratorio' %}" method="POST"> {% csrf_token %}
+                        <h3 name="data">Data {{data}}</h3>
+                        <br>
+                
+                        <h3>Laboratórios Reservados</h3>
+                        {% if labs_reservados %}
+                            {% for item in labs_reservados %}
+                            <h4 class='card-title' > {{item}} </h4>
+                            {% endfor %}
+                        {% endif %}
+                
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {{mensagem}}
+
+ 
+
+{% endblock content %}
