@@ -3,6 +3,7 @@ from django.shortcuts import render, HttpResponse
 from reservas.models import ReservasLaboratorios, Laboratorios, Blocos
 
 from django.db.models import Value as V
+from django.db.models import Q
 from django.db.models.functions import Concat
 from django import forms
 
@@ -28,15 +29,19 @@ def mostrarEnsalamentoLabs(request):
                                                     'blocos':blocos})
         else:
             nome_bloco = Blocos.objects.get(id_bloco=bloco)
-      
-            labs_disponiveis = Laboratorios.objects.exclude(id__in=ReservasLaboratorios.objects.only('id').filter(data_reserva=data).filter(bloco=bloco))
             labs_reservados = ReservasLaboratorios.objects.filter(data_reserva=data).filter(bloco=bloco).order_by('laboratorio')
-           
+    
+            todos_labs = Laboratorios.objects.filter(bloco=bloco)
+            labs_disponiveis = []
+            for lab in todos_labs:
+                if not ReservasLaboratorios.objects.filter(laboratorio=lab).filter(data_reserva=data).filter(bloco=bloco):
+                    labs_disponiveis.append(lab.nome)
 
             return render(request, 'ensalamento_labs.html', {'labs_disponiveis': labs_disponiveis,
                                                             'labs_reservados':labs_reservados,
                                                             'data':data,
-                                                            'nome_bloco':nome_bloco})
+                                                            'nome_bloco':nome_bloco,
+                                                            'todos_labs':todos_labs})
 
 
 def mostrarEnsalamentoLabsNome(request):

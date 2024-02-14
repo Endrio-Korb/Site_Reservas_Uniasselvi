@@ -25,7 +25,7 @@
                                 {% for lab in labs_reservados %}
                                 <tr>
                                     <td>{{lab.professor.nome}}</td>
-                                    <td>{{lab.laboratorio.nome}}</td>
+                                    <td>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
                                     <td>{{lab.periodo.nome_periodo}}</td>
                                 </tr>
                                 {% endfor %}
@@ -33,19 +33,13 @@
                         </tbody>
                     </table>
                 </div>
-            
                     <h1 class="text-center">Laboratórios disponíves</h1> 
-                    {% if labs_disponiveis %}
-                        {% for lab in labs_disponiveis %}
-                        <h2 class='text-center'>{{lab.nome}} {{lab.bloco}}{{lab.numero_sala}}</h2>
-                        {% endfor %}
-                    {% endif %}
-
+                    {% for lab in labs_disponiveis %}
+                        <h2 class="text-center">{{lab}}</h2>
+                    {% endfor %}
                 </form>
         </div>
     </div>
 
-
- 
 
 {% endblock content %}
