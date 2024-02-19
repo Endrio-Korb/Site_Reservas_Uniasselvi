@@ -7,14 +7,19 @@
         <div class="row">
             
             <form action="{% url 'reservas:registrar_reserva' %}" method="POST"> {% csrf_token %}
-                <h1 class='text-center' name="bloco">Bloco {{nome_bloco}}</h1>
-                <h1 class='text-center' name="data">Data {{data}}</h1>
+                <div class="container">
+                    <h1 class='text-center' name="bloco">Bloco {{nome_bloco}}</h1>
+                    <h1 class='text-center' name="data">Data {{data}}</h1>
+                </div>
                 
                 {% if labs_reservados %}
-                    <h1 class='text-center' >Laboratórios Reservados</h1>
-
                     <div class="container">
                         <table>
+                            <tr>
+                                <th></th>
+                                <th>Laboratórios Reservados</th>
+                                <th></th>
+                            </tr>
                             <tr>
                                 <th>Professor</th>
                                 <th>Laboratório</th>
@@ -35,12 +40,23 @@
                 {% endif %}
 
                 {% if labs_disponiveis %}
-                    <h1 class="text-center">Laboratórios disponíves</h1> 
-                    {% for lab in labs_disponiveis %}
-                        <h2 class="text-center">{{lab}}</h2>
-                    {% endfor %}
+                <div class="container">
+                    <table>
+                        <tr>
+                            <th>Laboratórios disponíves</th>
+                        </tr>
+                        {% for lab in labs_disponiveis %}
+                        <tr>
+                            <td>{{lab}}</td>
+                        </tr>
+       
+                        {% endfor %}
+
+                    </table>
+                </div>
+                    <h1 class="text-center"></h1> 
                 {% else %}
-                    <h1>Não há nenhum laboratório dispónivel</h1>
+                    <h1 class='text-center'>Não há nenhum laboratório dispónivel</h1>
                 {% endif %}
                 </form>
         </div>

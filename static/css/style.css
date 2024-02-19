@@ -66,25 +66,48 @@ table, th, td {
 }
     
 table {
-border-collapse: collapse;
-margin: auto;
+    border-collapse: collapse;
+    margin: 15px;
+    background-color: rgb(134, 134, 134);
+}
+
+table {
+    border:none;
 }
     
 th, td{
-padding: 10px;
-text-align: center;
-width: auto;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    width: auto;
 }
     
 th{
-font-weight: bold;
+    font-weight: bold;
 }
+
+th, td {
+    font-size: 1.5em;
+    color: black;
+}
+
+
 
 tr:nth-child(even){
-    background-color: rgb(110, 110, 110);
+    background-color: rgb(177, 177, 177);
+    
 }
 
-tr:hover:nth-child(1n + 2) {
-    background-color: lightgray;
+tr:hover:nth-child(1n + 3) {
+    background-color: white;
     color: black;
+}
+
+/* Titulos */
+h1 {
+    font-size: 2em;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
