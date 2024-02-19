@@ -10,3 +10,5 @@ De momento é possível realizar a consulta e o registro de novas reservas
 Tela de login
 Cadastro de Usuário
 Permissão de Usuarios
+Validações de Inputs
+Melhora no Layout
