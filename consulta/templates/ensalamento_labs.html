@@ -10,18 +10,18 @@
                 <h1 class='text-center' name="bloco">Bloco {{nome_bloco}}</h1>
                 <h1 class='text-center' name="data">Data {{data}}</h1>
                 
-                
-                <h1 class='text-center' >Laboratórios Reservados</h1>
+                {% if labs_reservados %}
+                    <h1 class='text-center' >Laboratórios Reservados</h1>
 
-                <div class="container text-center">
-                    <table>
-                        <thead>
-                            <th>Professor</th>
-                            <th>Laboratório</th>
-                            <th>Periodo</th>
-                        </thead>
-                        <tbody>
-                            {% if labs_reservados %}
+                    <div class="container text-center">
+                        <table>
+                            <thead>
+                                <th>Professor</th>
+                                <th>Laboratório</th>
+                                <th>Periodo</th>
+                            </thead>
+                            <tbody>
+                            
                                 {% for lab in labs_reservados %}
                                 <tr>
                                     <td>{{lab.professor.nome}}</td>
@@ -29,14 +29,22 @@
                                     <td>{{lab.periodo.nome_periodo}}</td>
                                 </tr>
                                 {% endfor %}
-                            {% endif %}
-                        </tbody>
-                    </table>
-                </div>
+                        
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <h2 class="text-center">Não há nenhum laboratório reservado</h2>
+                {% endif %}
+
+                {% if labs_disponiveis %}
                     <h1 class="text-center">Laboratórios disponíves</h1> 
                     {% for lab in labs_disponiveis %}
                         <h2 class="text-center">{{lab}}</h2>
                     {% endfor %}
+                {% else %}
+                    <h1>Não há nenhum laboratório dispónivel</h1>
+                {% endif %}
                 </form>
         </div>
     </div>
