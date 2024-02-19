@@ -13,24 +13,21 @@
                 {% if labs_reservados %}
                     <h1 class='text-center' >Laboratórios Reservados</h1>
 
-                    <div class="container text-center">
+                    <div class="container">
                         <table>
-                            <thead>
+                            <tr>
                                 <th>Professor</th>
                                 <th>Laboratório</th>
                                 <th>Periodo</th>
-                            </thead>
-                            <tbody>
-                            
-                                {% for lab in labs_reservados %}
-                                <tr>
-                                    <td>{{lab.professor.nome}}</td>
-                                    <td>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
-                                    <td>{{lab.periodo.nome_periodo}}</td>
-                                </tr>
-                                {% endfor %}
-                        
-                            </tbody>
+                            </tr>
+
+                            {% for lab in labs_reservados %}
+                            <tr>
+                                <td>{{lab.professor.nome}}</td>
+                                <td>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
+                                <td>{{lab.periodo.nome_periodo}}</td>
+                            </tr>
+                            {% endfor %}
                         </table>
                     </div>
                 {% else %}
