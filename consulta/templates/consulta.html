@@ -18,42 +18,47 @@
         </div>
     </div>
 
-    <div class="container">
-         <form action="{% url 'consulta:ensalamento_labs' %}" method="POST"> {% csrf_token %}
-             <div class="row">
+    {% comment %} Consulta por bloco {% endcomment %}
+    <section>
+        <div class="container">
+            <div class="row">
                 <div class="col">
-                    <h1 class="text-center">Consulta por Bloco</h1>
-                    <h2 class="text-center">Selecione a data</h2>
-                    <input class="input" type="date" name="data">
-                    <select class="input" name="bloco" >
-                        <option Selected>Selecione o Bloco</option>
-                        {% for bloco in blocos %}
-                        <option value="{{bloco.id_bloco}}">{{bloco.bloco}}</option>
-                        {% endfor %}
-                    </select>
+                    <h1 class="tittle text-center">Consulta por Bloco</h1>
+                    
+                    <form action="{% url 'consulta:ensalamento_labs' %}" method="POST"> {% csrf_token %}
+                        <input class="input" type="date" id='data' name="data" placeholder='Selecione a data'>
+                        <select id='bloco1' class="input" name="bloco" >
+                            <option Selected>Selecione o Bloco</option>
+                            {% for bloco in blocos %}
+                            <option value="{{bloco.id_bloco}}">{{bloco.bloco}}</option>
+                            {% endfor %}
+                        </select>
+                        <button type='submit' class='btn btn-primary btn-block'>Consultar</button>
+                    </form>  
+
                 </div>
             </div>
-            <button type='submit' class='btn btn-primary btn-block'>Consultar</button>
-        </form>  
-    </div>
 
+        </div>
+    </section>
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <form action="{% url "consulta:ensalamento_labs_nome" %}" method='POST'> {% csrf_token %}
+    {% comment %} Consulta por nome {% endcomment %}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form action="{% url "consulta:ensalamento_labs_nome" %}" method='POST'> {% csrf_token %}
 
-                    <h1 class="text-center">Consulta por nome do professor</h1>
-                    <h2 class="text-center" >Digite o nome do professor</h2>
-                    <input class="input" type="text" name='nome_professor'>
-                    <h2 class="text-center">Selecione a data</h2>
-                    <input class="input" type="date" name="data">
-                    <button type='submit' class="btn">Consultar</button>
-                 
-                </form>
+                        <h1 class="tittle text-center">Consulta por nome do professor</h1>
+                        <input class="input" type="text" name='nome_professor' placeholder='Digite o nome do professor'>
+                        <input class="input" type="date" name="data">
+                        <button type='submit' class="btn">Consultar</button>
+                    
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+</section>
         
         
         
