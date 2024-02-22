@@ -3,62 +3,79 @@
 {% block content %}
 
 
-    <div class="container text-center">
+    <div class="container">
         <div class="row">
+            <div class="container">
+                <h1 class='text-center' name="bloco">Bloco {{nome_bloco}}</h1>
+                <h1 class='text-center' name="data">Data {{data}}</h1>
+            </div>
             
-            <form action="{% url 'reservas:registrar_reserva' %}" method="POST"> {% csrf_token %}
-                <div class="container">
-                    <h1 class='text-center' name="bloco">Bloco {{nome_bloco}}</h1>
-                    <h1 class='text-center' name="data">Data {{data}}</h1>
-                </div>
+            <input type="checkbox" name="checkbox" id="checkbox-field" class="checkbox">
+            <label for="checkbox-field" class="checkbox-label"></label>
+
+            <div class="espaco-painel">
+
+                <form action="{% url 'reservas:registrar_reserva' %}" method="POST"> {% csrf_token %}
+
+
+                    <div class="painel">
+                        <div class="frente">
+                            <div class="conteudo-painel">
+                                {% if labs_reservados %}
+                                    <div class="container">
+                                        <table>
+                                            <tr>
+                                                <th></th>
+                                                <th>Laboratórios Reservados</th>
+                                                <th></th>
+                                            </tr>
+                                            <tr>
+                                                <th>Professor</th>
+                                                <th>Laboratório</th>
+                                                <th>Periodo</th>
+                                            </tr>
                 
-                {% if labs_reservados %}
-                    <div class="container">
-                        <table>
-                            <tr>
-                                <th></th>
-                                <th>Laboratórios Reservados</th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <th>Professor</th>
-                                <th>Laboratório</th>
-                                <th>Periodo</th>
-                            </tr>
+                                            {% for lab in labs_reservados %}
+                                            <tr>
+                                                <td>{{lab.professor.nome}}</td>
+                                                <td>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
+                                                <td>{{lab.periodo.nome_periodo}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                {% else %}
+                                    <h2 class="text-center">Não há nenhum laboratório reservado</h2>
+                                {% endif %}
+                            </div>
+                        </div>
 
-                            {% for lab in labs_reservados %}
-                            <tr>
-                                <td>{{lab.professor.nome}}</td>
-                                <td>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
-                                <td>{{lab.periodo.nome_periodo}}</td>
-                            </tr>
-                            {% endfor %}
-                        </table>
+                        <div class="verso">
+                            <div class="conteudo-painel">
+                                {% if labs_disponiveis %}
+                                    <div class="container">
+                                        <table>
+                                            <tr>
+                                                <th>Laboratórios disponíves</th>
+                                            </tr>
+                                            {% for lab in labs_disponiveis %}
+                                            <tr>
+                                                <td>{{lab}}</td>
+                                            </tr>
+                        
+                                            {% endfor %}
+                    
+                                        </table>
+                                    </div>
+                                        <h1 class="text-center"></h1> 
+                                {% else %}
+                                    <h1 class='text-center'>Não há nenhum laboratório dispónivel</h1>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
-                {% else %}
-                    <h2 class="text-center">Não há nenhum laboratório reservado</h2>
-                {% endif %}
-
-                {% if labs_disponiveis %}
-                <div class="container">
-                    <table>
-                        <tr>
-                            <th>Laboratórios disponíves</th>
-                        </tr>
-                        {% for lab in labs_disponiveis %}
-                        <tr>
-                            <td>{{lab}}</td>
-                        </tr>
-       
-                        {% endfor %}
-
-                    </table>
-                </div>
-                    <h1 class="text-center"></h1> 
-                {% else %}
-                    <h1 class='text-center'>Não há nenhum laboratório dispónivel</h1>
-                {% endif %}
                 </form>
+            </div>   
         </div>
     </div>
 

@@ -77,6 +77,104 @@ body {
     text-align: center;
 }
 
+/* Adiciona um espaço entre o painel e a barra de seleção de lado */
+.espaco-painel {
+    position: relative;
+    width: 450px;
+    max-width: 100%;
+    height: 400px;
+    transform-style: preserve-3d;
+    margin-top: 60px;
+    perspective: 800px;
+}
+
+/* Define o tamanho do painel e a posição do mesmo */
+.painel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    transition: 0.6s ease;
+}
+
+/* Parte que define o tamanho da div para frente e verso */
+.frente,
+.verso {
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+    position: absolute;
+    border-radius: 6px;
+    left: 0;
+    top: 0;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+/*  Define a rotação para a pagina verso */
+.verso {
+    transform: rotateY(180deg);
+}
+
+/* Altera o css dos elementos dentro do painel */
+.conteudo-painel {
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/*  Esconde o quadrado do checkbox */
+.checkbox:checked,
+.checkbox:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+/* Faz uma barra para a label para simular um seletor */
+.checkbox:checked + label,
+.checkbox:not(:checked) + label {
+    position: relative;
+    display: block;
+    width: 60px;
+    height: 16px;
+    border-radius: 8px;
+    padding: 0;
+    margin: 10px auto;
+    cursor: pointer;
+    background-color: black;
+}
+
+/* Faz uma bola que sobrepoe a barra da label para indicar qual lado está selecionado */
+.checkbox:checked + label::before,
+.checkbox:not(:checked) + label::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 60%;
+    background-color: white;
+    z-index: 20;
+    transition: 0.5s ease;
+}
+
+/* Faz a bola de seleção se mover para o lado que esta selecionado */
+.checkbox:checked + label::before {
+    transform: translateX(44px);
+}
+
+/* Faz o painel de mover sempre que o status da checkbox muda */
+.checkbox:checked ~ .espaco-painel .painel {
+    transform: rotateY(180deg);
+}
+
+
 /* Tabela */
 table, th, td {
     border: 1px solid white;
@@ -113,7 +211,7 @@ tr:nth-child(even){
     
 }
 
-tr:hover:nth-child(1n + 3) {
+tr:hover:nth-child(1n + 1) {
     background-color: white;
     color: black;
 }
