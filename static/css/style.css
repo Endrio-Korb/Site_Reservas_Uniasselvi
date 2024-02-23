@@ -77,6 +77,10 @@ body {
     text-align: center;
 }
 
+.seletor {
+    display: flex;
+    justify-content: space-evenly;
+}
 /* Adiciona um espaço entre o painel e a barra de seleção de lado */
 .espaco-painel {
     position: relative;
@@ -151,7 +155,10 @@ body {
 /* Faz uma bola que sobrepoe a barra da label para indicar qual lado está selecionado */
 .checkbox:checked + label::before,
 .checkbox:not(:checked) + label::before {
-    content: '';
+    content: "<";
+    justify-content: center;
+    align-items: center;
+    align-content: center;
     position: absolute;
     top: -10px;
     left: -10px;
@@ -162,11 +169,13 @@ body {
     background-color: white;
     z-index: 20;
     transition: 0.5s ease;
+    font-size: 2em;
+    transform: rotate(-320deg);
 }
 
 /* Faz a bola de seleção se mover para o lado que esta selecionado */
 .checkbox:checked + label::before {
-    transform: translateX(44px);
+    transform: translateX(44px) rotate(-240deg);
 }
 
 /* Faz o painel de mover sempre que o status da checkbox muda */
