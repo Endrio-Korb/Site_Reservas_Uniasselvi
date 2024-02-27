@@ -29,7 +29,7 @@ def mostrarEnsalamentoLabs(request):
                                                     'blocos':blocos})
         else:
             nome_bloco = Blocos.objects.get(id_bloco=bloco)
-            labs_reservados = ReservasLaboratorios.objects.filter(data_reserva=data).filter(bloco=bloco).order_by('laboratorio')
+            labs_reservados = ReservasLaboratorios.objects.filter(data_reserva=data).filter(bloco=bloco).order_by('laboratorio').order_by('periodo_id')
     
             todos_labs = Laboratorios.objects.filter(bloco=bloco)
             labs_disponiveis = []

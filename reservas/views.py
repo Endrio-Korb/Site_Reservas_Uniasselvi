@@ -52,7 +52,7 @@ def registrarReservarLaboratorio(request):
             nome = f'{professor}')
             salva_nome_professor.save()
 
-        verificar_reserva = ReservasLaboratorios.objects.filter(laboratorio=lab).filter(data_reserva=data).filter(bloco_id=bloco)
+        verificar_reserva = ReservasLaboratorios.objects.filter(laboratorio=lab).filter(data_reserva=data).filter(bloco_id=bloco).filter(periodo_id=periodo)
 
         if verificar_reserva:
             nome_lab = Laboratorios.objects.get(id=lab)
