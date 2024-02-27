@@ -15,15 +15,27 @@
 <body>
 
   <nav class="navbar">
-    <div class="container">
+    <div class="container-flex">
+
+      {% comment %} Botão para reserva do laboratórios {% endcomment %}
       <form action="{% url "reservas:reservar_laboratorio" %}" method="GET">
         {% csrf_token %}
         <button class="btn btn-nav">Reservar Laboratório</button>
       </form>
+
+      {% comment %} Botão para consulta de reservas {% endcomment %}
       <form action="{% url "consulta:consulta" %}" method="GET">
         {% csrf_token %}
         <button class="btn btn-nav">Consultar Reservas</button>
       </form>
+
+      {% comment %} Checkbox para alterar de tema claro para escuro {% endcomment %}
+      <input type="checkbox" name="checkbox-dark" id="chk-dark">
+      <label class='label-dark' for="chk-dark">
+        <i class='fas fa-moon'></i>
+        <i class='fas fa-sun'></i>
+        <div class="teme-ball"></div>
+      </label>
     </div>
   </nav>
 
@@ -31,6 +43,7 @@
     
  
   <script src="{% static 'js/index.js'%}"></script>
+  <script src="https://kit.fontawesome.com/560af2bb7b.js" crossorigin="anonymous"></script>
     
 </body>
 </html>
