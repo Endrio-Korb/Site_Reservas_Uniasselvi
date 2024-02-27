@@ -4,7 +4,7 @@
       <!-- Data da Reserva -->
       <div class="row">
          <div class="col">
-            <input type="date" name="data">
+            <input class='input data-module' type="date" name="data">
          </div>
       </div>
    </div>
@@ -13,7 +13,7 @@
    <div class="container">
       <div class="row">
          <div class="col">
-            <select name="periodo" >
+            <select class='input' name="periodo" >
             <option selected>Selecione o Periodo</option>
             {% for periodo in periodos %}
                <option value="{{periodo.id}}">{{periodo.nome_periodo}}</option>
@@ -27,7 +27,7 @@
    <div class="container">
       <div class="row">
          <div class="col">
-            <select  name="nome_lab" id="">
+            <select class='input' name="nome_lab" id="">
                <option selected>Selecione o Laboratório</option>
                {% for lab in laboratorios %}
                   <option value="{{lab.id}}">{{lab.nome}}</option>
@@ -41,7 +41,7 @@
    <div class="container">
       <div class="row">
          <div class="col">
-            <input type="text" name='nome_professor' placeholder="Nome do professor" list='lista_professores'>
+            <input class='input' type="text" name='nome_professor' placeholder="Nome do professor" list='lista_professores'>
             <datalist id='lista_professores'>
                   {% for professor in professores %}
                      <option value="{{professor.nome}}"></option>

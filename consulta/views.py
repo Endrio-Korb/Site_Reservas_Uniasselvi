@@ -35,7 +35,7 @@ def mostrarEnsalamentoLabs(request):
             labs_disponiveis = []
             for lab in todos_labs:
                 if not ReservasLaboratorios.objects.filter(laboratorio=lab).filter(data_reserva=data).filter(bloco=bloco):
-                    labs_disponiveis.append(lab.nome)
+                    labs_disponiveis.append(f'{lab.nome} {lab.bloco}{lab.numero_sala}')
 
             return render(request, 'ensalamento_labs.html', {'labs_disponiveis': labs_disponiveis,
                                                             'labs_reservados':labs_reservados,
