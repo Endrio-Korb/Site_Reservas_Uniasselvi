@@ -207,7 +207,10 @@ select {
 
 /* Alteração tema claro e escuro */
 body.dark {
-    background-color: white;
+    background-color: rgb(145, 145, 145);
+}
+.tittle.dark {
+    color: black;
 }
 
 #chk-dark {
@@ -256,6 +259,7 @@ body.dark {
 .fa-sun {
     color: #f39c12;
 }
+
 /* Tabela */
 table, th, td {
     border: 1px solid white;
