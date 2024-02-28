@@ -7,12 +7,19 @@
             <div class="row">
                 <div class="col">
                     <form action="{% url 'reservas:reservar_laboratorio' %}" method="POST"> {% csrf_token %}
-                        <h3 class='tittle text-center text' name="data">Data {{data}}</h3>
-                        <h3 class='tittle text-center text'>Laboratórios Reservados</h3>
+                        <h1 class='tittle text-center text' name="data">Data {{data}}</h1>
+                        <h1 class='tittle text-center text'>Laboratórios Reservados</h1>
                         {% if labs_reservados %}
+                        <table>
+                            <tr>
+                                <td></td>
+                            </tr>
                             {% for item in labs_reservados %}
-                            <h4 class='card-title' > {{item}} </h4>
+                                <tr>
+                                    <td class='text'>{{item}}</td>
+                                </tr>
                             {% endfor %}
+                        </table>
                         {% endif %}
                 
                     </form>
