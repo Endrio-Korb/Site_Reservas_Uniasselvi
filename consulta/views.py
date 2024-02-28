@@ -1,13 +1,10 @@
 from django.shortcuts import render, HttpResponse
 
-from reservas.models import ReservasLaboratorios, Laboratorios, Blocos
+from reservas.models import ReservasLaboratorios, Laboratorios, Blocos, Professores
 
 from django.db.models import Value as V
-from django.db.models import Q
 from django.db.models.functions import Concat
-from django import forms
 
-from datetime import datetime
 
 def consulta(request):
     blocos = Blocos.objects.all()
@@ -56,11 +53,17 @@ def mostrarEnsalamentoLabsNome(request):
         return render(request, 'consulta.html', {'mensagem':mensagem,
                                                  'blocos':blocos})
 
-    labs_reservados = ReservasLaboratorios.objects.annotate(full_name=Concat('nome_professor', V(' '))).filter(full_name__icontains=nome_prof).filter(data_reserva=data).order_by('nome_laboratorio')
+
+    professores = Professores.objects.annotate(full_name=Concat('nome', V(' '))).filter(full_name__icontains=nome_prof)
+    labs_reservados = []
+    for professor in professores:
+        consulta = ReservasLaboratorios.objects.filter(data_reserva=data).filter(professor_id=professor).order_by('laboratorio').order_by('periodo')
+        for item in consulta:
+            labs_reservados.append(f'{item.professor} {item.laboratorio.nome} {item.bloco}{item.laboratorio.numero_sala} {item.periodo}')
 
     if labs_reservados:
         return render(request, 'ensalamento_labs_nome.html', {'labs_reservados': labs_reservados,
                                                             'data': data})
     else:
-        mensagem = 'Não há laboratórios reservados para esse professor(a)'
+        mensagem = f'Não há laboratórios reservados para {nome_prof}'
         return render(request, 'ensalamento_labs_nome.html', {'mensagem':mensagem})
