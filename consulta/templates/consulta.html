@@ -23,12 +23,12 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h1 class="tittle text-center">Consulta por Bloco</h1>
+                    <h1 class="tittle text-center text">Consulta por Bloco</h1>
                     
                     <form action="{% url 'consulta:ensalamento_labs' %}" method="POST"> {% csrf_token %}
                         <div class="container">
                             <input class="input" type="date" id='data' name="data" placeholder='Selecione a data'>
-                            <select id='bloco1' class="" name="bloco" >
+                            <select id='bloco1' class="input" name="bloco" >
                                 <option Selected>Selecione o Bloco</option>
                                 {% for bloco in blocos %}
                                 <option value="{{bloco.id_bloco}}">{{bloco.bloco}}</option>
@@ -51,7 +51,7 @@
                 <div class="col">
                     <form action="{% url "consulta:ensalamento_labs_nome" %}" method='POST'> {% csrf_token %}
                         <div class="container">
-                            <h1 class="tittle text-center">Consulta por nome do professor</h1>
+                            <h1 class="tittle text-center text">Consulta por nome do professor</h1>
                             <input class="input" type="text" name='nome_professor' placeholder='Digite o nome do professor'>
                             <input class="input" type="date" name="data">
                             <button type='submit' class="btn">Consultar</button>
