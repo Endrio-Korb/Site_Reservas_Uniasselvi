@@ -41,15 +41,11 @@ const reservados = document.querySelector('#reservados')
 const disponiveis = document.querySelector('#disponiveis')
 
 chk_lab.addEventListener('change', () => {
-    if (reservados.classList.contains('principal')){
+    if (chk_lab.checked == true){
         reservados.classList.remove('principal')
+        disponiveis.classList.toggle('principal')
     } else {
         reservados.classList.toggle('principal')
-    }
-
-    if (disponiveis.classList.contains('principal')){
         disponiveis.classList.remove('principal')
-    } else {
-        disponiveis.classList.toggle('principal')
     }
 })
