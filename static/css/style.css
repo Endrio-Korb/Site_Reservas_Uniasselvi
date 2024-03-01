@@ -41,18 +41,23 @@ body {
 
 .mensagem-sucesso,
 .mensagem-erro {
-    padding: 10px;
     display: flex;
     text-wrap: wrap;
-    font-size: 1.5em;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 
 .mensagem-erro {
+    font-size: 1.75em;
     color: red;
+    text-shadow: rgb(175, 1, 1);
 }
 
 .mensagem-sucesso {
-    color: green;
+    font-size: 2em;
+    color: rgb(0, 138, 0);
+    text-shadow: rgb(1, 90, 1);
 }
 
 /* Containers */
@@ -124,6 +129,7 @@ select {
     font-size: 1.2em;
     color: black;
     text-shadow: 1px 1px 2px white;
+    border: 2px solid rgb(0, 0, 0);
 }
 
 .btn-nav:hover {

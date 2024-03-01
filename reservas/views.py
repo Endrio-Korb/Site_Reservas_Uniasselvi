@@ -95,5 +95,5 @@ def registrarReservarLaboratorio(request):
             reserva.save()
             sucesso = 'Reserva registrada com sucesso'
             return render(request, 'consulta.html', {'blocos': blocos,
-                                                      'mensagem': sucesso})
+                                                      'sucesso': sucesso})
         

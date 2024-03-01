@@ -49,8 +49,8 @@ def mostrarEnsalamentoLabsNome(request):
 
     if not data or not nome_prof:
         blocos = Blocos.objects.all()
-        mensagem = 'Data ou nome do professor faltando'
-        return render(request, 'consulta.html', {'mensagem':mensagem,
+        erro = 'Data ou Nome do Professor Faltando'
+        return render(request, 'consulta.html', {'erro':erro,
                                                  'blocos':blocos})
 
 

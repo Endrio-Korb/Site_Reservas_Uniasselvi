@@ -8,10 +8,6 @@
             <div class="erro">
                 <h4 class='mensagem-erro'>{{erro}}</h4>
             </div>
-        </div>
-    </div>
-    <div class="conteiner-flex">
-        <div class="row">
             <div class="sucesso">
                 <h4 class="mensagem-sucesso">{{sucesso}}</h4>
             </div>
@@ -51,7 +47,7 @@
                 <div class="col">
                     <form action="{% url "consulta:ensalamento_labs_nome" %}" method='POST'> {% csrf_token %}
                         <div class="container">
-                            <h1 class="tittle text-center text">Consulta por nome do professor</h1>
+                            <h1 class="tittle text-center text">Consulta por Nome do Professor</h1>
                             <input class="input" type="text" name='nome_professor' placeholder='Digite o nome do professor'>
                             <input class="input" type="date" name="data">
                             <button type='submit' class="btn">Consultar</button>
