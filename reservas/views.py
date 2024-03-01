@@ -75,16 +75,14 @@ def registrarReservarLaboratorio(request):
             nome = f'{professor}')
             salva_nome_professor.save()
 
-        verificar_reserva = ReservasLaboratorios.objects.filter(laboratorio=lab).filter(data_reserva=data).filter(bloco_id=bloco).filter(periodo_id=periodo)
+        verificar_reserva = ReservasLaboratorios.objects.filter(laboratorio=lab).filter(data_reserva=data).filter(bloco_id=bloco).filter(periodo_id=periodo).only('laboratorio')
 
         if verificar_reserva:
             nome_lab = Laboratorios.objects.get(id=lab)
             str_periodo = Periodos.objects.get(id=periodo)
-
-            erro = f'{nome_lab} já está reservado no periodo {str_periodo} para data {data} '
-            contexto = {'blocos': blocos,
-                         'erro': erro}
-            return render(request, 'consulta.html', {'contexto':contexto})
+            erro = f'{nome_lab.nome} já está reservado no periodo {str_periodo} para data {data} '
+            return render(request, 'consulta.html', {'blocos':blocos,
+                                                     'erro':erro})
         
         else:
             reserva = ReservasLaboratorios.objects.create(
@@ -95,7 +93,7 @@ def registrarReservarLaboratorio(request):
                 bloco_id = f'{bloco}',
             )
             reserva.save()
-            mensagem = 'Reserva registrada com sucesso'
+            sucesso = 'Reserva registrada com sucesso'
             return render(request, 'consulta.html', {'blocos': blocos,
-                                                      'mensagem': mensagem})
+                                                      'mensagem': sucesso})
         
