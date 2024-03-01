@@ -6,8 +6,8 @@
     <div class="container-flex">
         <div class="row">
             <div class="container-flex">
-                <h1 class='tittle text-center text' name="bloco">Bloco {{nome_bloco}}</h1>
-                <h1 class='tittle text-center text' name="data">Data {{data}}</h1>
+                <h1 class='tittle text' name="bloco">Bloco {{nome_bloco}}</h1>
+                <h1 class='tittle text' name="data">Data {{data}}</h1>
             </div>
             <div class="seletor">
                 <h2 class='text reservados principal' id="reservados">Reservados</h2>
@@ -28,16 +28,16 @@
                                     <div class="container">
                                         <table>
                                             <tr>
-                                                <th class='text'>Professor</th>
-                                                <th class='text'>Laboratório</th>
-                                                <th class='text'>Periodo</th>
+                                                <th class='text-table'>Professor</th>
+                                                <th class='text-table'>Laboratório</th>
+                                                <th class='text-table'>Periodo</th>
                                             </tr>
                 
                                             {% for lab in labs_reservados %}
-                                            <tr>
-                                                <td class='text'>{{lab.professor.nome}}</td>
-                                                <td class='text'>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
-                                                <td class='text'>{{lab.periodo.nome_periodo}}</td>
+                                            <tr class='lista_reservados'>
+                                                <td class='text-table'>{{lab.professor.nome}}</td>
+                                                <td class='text-table'>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
+                                                <td class='text-table'>{{lab.periodo.nome_periodo}}</td>
                                             </tr>
                                             {% endfor %}
                                         </table>
@@ -54,8 +54,8 @@
                                     <div class="container">
                                         <table>
                                             {% for lab in labs_disponiveis %}
-                                            <tr>
-                                                <td class='text'>{{lab}}</td>
+                                            <tr class='lista_disponiveis'>
+                                                <td class='text-table'>{{lab}}</td>
                                             </tr>
                         
                                             {% endfor %}
