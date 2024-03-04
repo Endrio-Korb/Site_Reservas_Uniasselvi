@@ -18,16 +18,24 @@
   <nav class="navbar">
     <div class="container-flex">
       {% comment %} Botão para reserva do laboratórios {% endcomment %}
-      <form action="{% url "reservas:reservar_laboratorio" %}" method="GET">
-        {% csrf_token %}
+      <form action="{% url "reservas:reservar_laboratorio" %}" method="GET"> {% csrf_token %}
         <button class="btn btn-nav">Reservar Laboratório</button>
       </form>
 
       {% comment %} Botão para consulta de reservas {% endcomment %}
-      <form action="{% url "consulta:consulta" %}" method="GET">
-        {% csrf_token %}
+      <form action="{% url "consulta:consulta" %}" method="GET"> {% csrf_token %}
         <button class="btn btn-nav">Consultar Reservas</button>
       </form>
+
+      {% comment %} Nome de usuario ou botão de login {% endcomment %}
+      {% if user.is_authenticated  %}
+        <h1>Usuario logado</h1>
+      {% else %}
+      <form action="{% url "usuarios:login" %}" method="GET"> {% csrf_token %}
+        <button class='btn btn-nav'>Login</button>
+      </form>
+      {% endif %}
+
 
       {% comment %} Checkbox para alterar de tema claro para escuro {% endcomment %}
       {% comment %} <input type="checkbox" name="checkbox-dark" id="chk-dark">

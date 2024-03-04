@@ -49,6 +49,7 @@ body {
     text-shadow: 1px 1px 1x black;
     padding: 5px;
     border-radius: 10px;
+    margin-bottom: 50px;
 }
 
 .mensagem_erro {
@@ -104,6 +105,7 @@ select {
 /* Barra de Navegação */
 .navbar {
     height: 70px;
+    margin-bottom: 50px;
 }
 
 /* Botões */
