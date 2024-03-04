@@ -3,32 +3,34 @@
 
 {% block content %}
 
+    {% comment %} Mensagem de erro {% endcomment %}
     {% if erro %}
         <div class="container-flex">
             <div class="row">
                 <div class="erro">
-                    <h4 class='mensagem_erro'>{{erro}}</h4>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-    {% if sucesso %}
-        <div class="container-flex">
-            <div class="row">
-                <div class="sucesso">
-                    <h4 class="mensagem_sucesso">{{sucesso}}</h4>
+                    <p class='mensagem_erro'>{{erro}}</p>
                 </div>
             </div>
         </div>
     {% endif %}
 
-    {% comment %} Consulta por bloco {% endcomment %}
+    {% comment %} Mensagem de sucesso {% endcomment %}
+    {% if sucesso %}
+        <div class="container-flex">
+            <div class="row">
+                <div class="sucesso">
+                    <p class="mensagem_sucesso">{{sucesso}}</p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% comment %} Consulta ensalamento por bloco e data{% endcomment %}
     <section>
         <div class="container">
             <div class="row">
                 <div class="col">
                     <h1 class="tittle text-center text">Consulta por Bloco</h1>
-                    
                     <form action="{% url 'consulta:ensalamento_labs' %}" method="POST"> {% csrf_token %}
                         <div class="container">
                             <input class="input" type="date" id='data' name="data" placeholder='Selecione a data'>
@@ -41,14 +43,12 @@
                         </div>
                         <button type='submit' class='btn'>Consultar</button>
                     </form>  
-
                 </div>
             </div>
-
         </div>
     </section>
 
-    {% comment %} Consulta por nome {% endcomment %}
+    {% comment %} Consulta por nome do professor e data{% endcomment %}
     <section>
         <div class="container">
             <div class="row">

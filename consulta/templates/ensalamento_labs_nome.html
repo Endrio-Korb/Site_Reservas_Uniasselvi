@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 
+    {% comment %} Mostra lista de reservas {% endcomment %}
     {% if labs_reservados %}
         <div class="container text-center">
             <div class="row">
@@ -16,10 +17,12 @@
                             </tr>
                             {% for item in labs_reservados %}
                                 <tr>
-                                    <td class='text'>{{item}}</td>
+                                    <td class='text text-center'>{{item}}</td>
                                 </tr>
                             {% endfor %}
                         </table>
+                        {% else %}
+                            <p class="text text-center">Não á reservas para esse professor</p>
                         {% endif %}
                 
                     </form>
@@ -28,7 +31,14 @@
         </div>
     {% endif %}
 
-    {{mensagem}}
+    {% comment %} Exibe mensagem informando que não há laboratório reservados {% endcomment %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="text text-center">{{mensagem}}</p>
+            </div>
+        </div>
+    </div>
 
  
 

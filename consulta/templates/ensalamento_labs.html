@@ -9,19 +9,19 @@
                 <h1 class='tittle text' name="bloco">Bloco {{nome_bloco}}</h1>
                 <h1 class='tittle text' name="data">Data {{data}}</h1>
             </div>
+            {% comment %} Checbox para exibir laboratório reservados ou disponíveis {% endcomment %}
             <div class="seletor">
-                <h2 class='text reservados principal' id="reservados">Reservados</h2>
-                <h2 class='text disponiveis ' id="disponiveis">Disponiveis</h2>
+                <p class='text reservados principal' id="reservados">Reservados</p>
+                <p class='text disponiveis ' id="disponiveis">Disponiveis</p>
             </div>
             <input type="checkbox" name="checkbox" id="checkbox-field" class="checkbox">
             <label for="checkbox-field" class="checkbox-label"></label>
 
+            {% comment %} Espaço onde irá aparecer a lista de laboratório reservados e disponveis {% endcomment %}
             <div class="espaco-painel">
-
                 <form action="{% url 'reservas:registrar_reserva' %}" method="POST"> {% csrf_token %}
-
-
                     <div class="painel">
+                        {% comment %} Frente onde exibe lista de laboratório reservados caso possua alguma reserva {% endcomment %}
                         <div class="frente">
                             <div class="conteudo-painel">
                                 {% if labs_reservados %}
@@ -43,11 +43,12 @@
                                         </table>
                                     </div>
                                 {% else %}
-                                    <h2 class="text-center">Não há nenhum laboratório reservado</h2>
+                                    <p class="text text-center">Não há nenhum laboratório reservado</p>
                                 {% endif %}
                             </div>
                         </div>
 
+                        {% comment %} Verso onde exibe lista de laboratórios disponíveis caso possua algum {% endcomment %}
                         <div class="verso">
                             <div class="conteudo-painel">
                                 {% if labs_disponiveis %}
@@ -57,14 +58,12 @@
                                             <tr class='lista_disponiveis'>
                                                 <td class='text-table'>{{lab}}</td>
                                             </tr>
-                        
                                             {% endfor %}
-                    
                                         </table>
                                     </div>
                                         <h1 class="text-center"></h1> 
                                 {% else %}
-                                    <h1 class='text-center'>Não há nenhum laboratório dispónivel</h1>
+                                    <p class='text-center'>Não há nenhum laboratório dispónivel</p>
                                 {% endif %}
                             </div>
                         </div>

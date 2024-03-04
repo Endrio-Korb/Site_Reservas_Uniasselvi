@@ -14,9 +14,9 @@
 </head>
 <body>
 
+  {% comment %} Barra de navegação {% endcomment %}
   <nav class="navbar">
     <div class="container-flex">
-
       {% comment %} Botão para reserva do laboratórios {% endcomment %}
       <form action="{% url "reservas:reservar_laboratorio" %}" method="GET">
         {% csrf_token %}
@@ -39,10 +39,13 @@
     </div>
   </nav>
 
+  {% comment %} Conteudo das outras páginas {% endcomment %}
   {% block content %}{% endblock content %} 
     
- 
+  {% comment %} Link para arquivo JS do projetor {% endcomment %}
   <script src="{% static 'js/index.js'%}"></script>
+
+  {% comment %} Link para fonte de icones {% endcomment %}
   <script src="https://kit.fontawesome.com/560af2bb7b.js" crossorigin="anonymous"></script>
     
 </body>

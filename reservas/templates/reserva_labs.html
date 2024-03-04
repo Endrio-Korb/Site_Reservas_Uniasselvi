@@ -3,6 +3,7 @@
 
 {% block content %}
 
+   {% comment %} Lista de inputs para registrar uma reserva {% endcomment %}
    <div class="container">
       <div class="row">
          <div class="col">
@@ -12,6 +13,7 @@
                hx-trigger="change"
                hx-target="#modules">
                
+               {% comment %} Seleção de bloco {% endcomment %}
                   <option class='input' selected>Selecione o Bloco</option>
                   {% for bloco in blocos %}
                      <option value="{{bloco.id_bloco}}">{{bloco.bloco}}</option>
