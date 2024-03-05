@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:consulta="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,21 +18,26 @@
   <nav class="navbar">
     <div class="container-flex">
       {% comment %} Botão para reserva do laboratórios {% endcomment %}
-      <form action="{% url "reservas:reservar_laboratorio" %}" method="GET"> {% csrf_token %}
-        <button class="btn btn-nav">Reservar Laboratório</button>
-      </form>
+      {% if request.user.is_authenticated %}
+        <form action="{% url "reservas:reservar_laboratorio" %}" method="GET"> {% csrf_token %}
+          <button class="btn btn-nav">Reservar Laboratório</button>
+        </form>
+      {% endif %}
 
       {% comment %} Botão para consulta de reservas {% endcomment %}
-      <form action="{% url "consulta:consulta" %}" method="GET"> {% csrf_token %}
+      <form action="{% url 'consulta:consulta' %}" method="GET"> {% csrf_token %}
         <button class="btn btn-nav">Consultar Reservas</button>
       </form>
 
       {% comment %} Nome de usuario ou botão de login {% endcomment %}
-      {% if user.is_authenticated  %}
-        <h1>Usuario logado</h1>
+      {% if request.user.is_authenticated  %}
+            <a href="#">Olá {{request.user | title}}</a>
+        <form action="{% url 'usuarios:logout' %}" method="GET"> {% csrf_token %}
+          <button class="btn btn-nav">Sair</button>
+        </form>
       {% else %}
-      <form action="{% url "usuarios:login" %}" method="GET"> {% csrf_token %}
-        <button class='btn btn-nav'>Login</button>
+      <form action="{% url 'usuarios:login' %}" method="GET"> {% csrf_token %}
+        <button class="btn btn-nav">Entrar</button>
       </form>
       {% endif %}
 

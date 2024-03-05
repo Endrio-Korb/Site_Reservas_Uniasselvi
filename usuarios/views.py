@@ -1,11 +1,33 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse
 
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
-from django.contrib.auth import login as login_django
+from django.contrib.auth import authenticate, logout, login
+from django.contrib import messages
+
+from django.urls import reverse_lazy
 
 
-def cadastro(request):
+def login_user(request):
+    if request.method == "POST":
+        usuario = request.POST['usuario']
+        senha = request.POST['senha']
+        user = authenticate(request, username=usuario, password=senha)
+        if user is not None:
+            login(request, user)
+            return redirect('consulta:consulta')
+        else:
+            erro = 'Usuário ou senha inválidos'
+            return render(request, 'authenticate/login.html', {'erro':erro})
+    else:
+        return render(request,'authenticate/login.html')
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, ('Você saiu'))
+    return redirect('consulta:consulta')
+
+
+def cadastrar_user(request):
     if request.method == 'GET':
         return render(request, 'cadastro.html')
     else:
@@ -31,25 +53,8 @@ def cadastro(request):
         password=senha,
         is_staff=False,
     )
+    user.groups.set('2')
     user.save()
 
     sucesso = 'Usuário cadastrado com sucesso'
     return render(request,'login.html', {'sucesso':sucesso})
-        
-
-
-def login(request):
-    if request.method == 'GET':
-        return render(request, 'login.html')
-    else:
-        usuario = request.POST.get = ('usuario')
-        senha = request.POST.get = ('senha')
-
-        user = authenticate(username=usuario, password=senha)
-
-        if user:
-            login_django(request, user)
-            return render(request, 'consulta.html')
-        else:
-            erro = 'Usuário ou senha inválidos'
-            return render(request,'login.html', {'erro': erro})

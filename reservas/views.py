@@ -10,11 +10,6 @@ from django.contrib.auth import authenticate
 
 from professores.models import Professores
 
-from consulta import views
-
-
-from datetime import date
-
 
 @login_required(login_url='/auth/login/')
 def ReservarLaboratorio(request):
