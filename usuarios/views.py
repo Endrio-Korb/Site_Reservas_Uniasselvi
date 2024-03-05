@@ -57,4 +57,4 @@ def cadastrar_user(request):
     user.save()
 
     sucesso = 'Usuário cadastrado com sucesso'
-    return render(request,'login.html', {'sucesso':sucesso})
+    return render(request,'authenticate/login.html', {'sucesso':sucesso})
