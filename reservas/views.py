@@ -1,5 +1,6 @@
 from .models import ReservasLaboratorios, Laboratorios
 from .models import Periodos, Blocos
+from professores.models import Professores
 from django.contrib.auth.models import User
 
 from django.shortcuts import render, get_object_or_404, HttpResponse, HttpResponseRedirect
@@ -8,19 +9,27 @@ from django.shortcuts import render, get_object_or_404, HttpResponse, HttpRespon
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.contrib.auth import authenticate
+from braces.views import GroupRequiredMixin
+from django.views.generic import ListView
 
-from professores.models import Professores
+
+
+class ReservarLabs(GroupRequiredMixin, ListView):
+    group_required = u'Funcionarios'
+    model = Blocos
+    queryset = Blocos.objects.all()
+    template_name = 'reserva_labs.html'
 
 
 
 #@login_required(login_url='/auth/login/')
-def ReservarLaboratorio(request):
-    #usuario = request.user
+# def ReservarLaboratorio(request):
+#     #usuario = request.user
     
 
 
-    blocos = Blocos.objects.all()
-    return render(request, 'reserva_labs.html', {'blocos': blocos})
+#     blocos = Blocos.objects.all()
+#     return render(request, 'reserva_labs.html', {'blocos': blocos})
 
 def modules(request):
     bloco = request.GET.get('blocos')
