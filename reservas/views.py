@@ -1,9 +1,10 @@
 from .models import ReservasLaboratorios, Laboratorios
 from .models import Periodos, Blocos
+from django.contrib.auth.models import User
 
 from django.shortcuts import render, get_object_or_404, HttpResponse, HttpResponseRedirect
 
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.contrib.auth import authenticate
@@ -11,8 +12,13 @@ from django.contrib.auth import authenticate
 from professores.models import Professores
 
 
-@login_required(login_url='/auth/login/')
+
+#@login_required(login_url='/auth/login/')
 def ReservarLaboratorio(request):
+    #usuario = request.user
+    
+
+
     blocos = Blocos.objects.all()
     return render(request, 'reserva_labs.html', {'blocos': blocos})
 

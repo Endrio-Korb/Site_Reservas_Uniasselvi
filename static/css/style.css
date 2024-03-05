@@ -425,3 +425,25 @@ h1 {
         margin-bottom: 10px;
     }
 }
+
+
+#link_whatsapp {
+    text-decoration: none;
+    font-size: 1.5em;
+    color: white;
+    
+}
+
+#fundo-whats {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(0, 201, 30);
+    border: 3px solid rgb(0, 152, 16);
+    height: 50px;
+    width: 230px;
+    border-radius: 10rem;
+
+    transition: transform 0.3s;
+}

@@ -55,6 +55,16 @@
   {% comment %} Conteudo das outras páginas {% endcomment %}
   {% block content %}{% endblock content %} 
     
+  {% comment %} Link para conversa no whatsapp {% endcomment %}
+  <footer class='container'>
+    <div id="fundo-whats">
+      <a id='link_whatsapp' href="https://wa.me/+5547984935353?text=Gostaria%20de%20solicitar%20reserva%20de%20um%20laboratorio" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>Solicitar Reserva</a>
+    </div>
+        
+  </footer>
+
+
   {% comment %} Link para arquivo JS do projetor {% endcomment %}
   <script src="{% static 'js/index.js'%}"></script>
 
