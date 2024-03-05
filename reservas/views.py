@@ -6,8 +6,7 @@ from django.shortcuts import render, get_object_or_404, HttpResponse, HttpRespon
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
-
-from .forms import LocationForm
+from django.contrib.auth import authenticate
 
 from professores.models import Professores
 
@@ -16,10 +15,11 @@ from consulta import views
 
 from datetime import date
 
+
+@login_required(login_url='/auth/login/')
 def ReservarLaboratorio(request):
     blocos = Blocos.objects.all()
     return render(request, 'reserva_labs.html', {'blocos': blocos})
-
 
 def modules(request):
     bloco = request.GET.get('blocos')
