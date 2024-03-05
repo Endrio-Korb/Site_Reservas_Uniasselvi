@@ -1,17 +1,7 @@
 from django.db import models
 
 from professores.models import Professores
-   
-class Status(models.Model):
-    id_status = models.IntegerField(null=False, blank=False)
-    nome_status = models.CharField(max_length=20, null=False, blank=False)
 
-    class Meta:
-        db_table = "tb_status"
-
-    def __str__(self):
-        return self.nome_status
-    
 class Periodos(models.Model):
     id_periodo = models.IntegerField(null=False, blank=False)
     nome_periodo = models.CharField(max_length=20, null=False, blank=False)
