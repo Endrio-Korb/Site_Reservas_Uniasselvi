@@ -12,3 +12,6 @@ Cadastro de Usuário
 Permissão de Usuarios
 Validações de Inputs
 Melhora no Layout
+
+
+Adicionar botão para contato no whatsapp
