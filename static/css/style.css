@@ -321,11 +321,7 @@ th, td{
     font-size: 1.5em;
 }
 
-td {
-    width: 500px;
-    text-align: center;
-}
-    
+
 th{
     font-weight: bold;
 }
@@ -333,15 +329,20 @@ th{
 table .lista_reservados:hover:nth-child(1n + 2),
 table .lista_reservados:hover:nth-child(1n + 2) .text {
     background-color:lightgray;
-    color: white;
 }
 
 table .lista_disponiveis:hover:nth-child(1n + 1), 
 table .lista_disponiveis:hover:nth-child(1n + 1) .text {
-    background-color: rgb(49, 49, 49);
-    color: white;
+    background-color: lightgray;
+}
+td {
+    width: 500px;
+    text-align: center;
 }
 
+table .lista_reservados .lab {
+    width: 600px;
+}
 tr .periodo {
     width: 130px;
 }

@@ -36,7 +36,7 @@
                                             {% for lab in labs_reservados %}
                                             <tr class='lista_reservados'>
                                                 <td class='text text-table'>{{lab.professor.nome}}</td>
-                                                <td class='text text-table'>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
+                                                <td class='lab text text-table'>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
                                                 <td class='text text-table'>{{lab.periodo.nome_periodo}}</td>
                                             </tr>
                                             {% endfor %}
