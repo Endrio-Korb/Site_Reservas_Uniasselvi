@@ -19,8 +19,13 @@
     <ul>
       {% comment %} Link para reserva do laboratórios {% endcomment %}
       {% if request.user.is_authenticated %}
-        <li>
-          <a href="{% url "reservas:reservar_laboratorio" %}">Reservar Laboratório</a>
+        <li class='dropdown'>
+          <a href="#">Laboratórios</a>
+          <div class="dropdown-menu">
+            <a href="{% url "reservas:reservar_laboratorio" %}">Registrar Reserva</a>
+            <a href="#">Editar Reserva</a>
+            <a href="#">Cancelar Reserva</a>
+          </div>
         </li>
       {% endif %}
       
@@ -48,7 +53,7 @@
         {% comment %} Link para conversa no whatsapp {% endcomment %}
       <li  id="">
         <a id='' href="https://wa.me/+5547984935353?text=Gostaria%20de%20solicitar%20reserva%20de%20um%20laboratorio" target="_blank">
-          <i class="fa-brands fa-whatsapp"></i>Solicitar Reserva</a>
+          <i class="fa-brands fa-whatsapp"></i> Solicitar Reserva</a>
       </li>
       
     </ul>
