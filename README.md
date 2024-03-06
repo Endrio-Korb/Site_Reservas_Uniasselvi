@@ -13,5 +13,12 @@ Permissão de Usuarios
 Validações de Inputs
 Melhora no Layout
 
+===== Usuarios =====
+Adicionar página de dados do usário
 
-Adicionar botão para contato no whatsapp
+===== Reservas =====
+Pagina para edição de reservas
+Pagina de exclusão de reservas
+
+===== Consulta =====
+Pagina de laboratorios disponiveis precisa mostrar por periodo
