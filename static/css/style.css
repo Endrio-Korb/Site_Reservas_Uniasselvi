@@ -223,7 +223,7 @@ nav li a:hover {
     align-items: center;
     justify-content: center;
     color: white;
-    
+
 }
 
 /*  Esconde o quadrado do checkbox */
@@ -298,6 +298,89 @@ nav li a:hover {
     justify-content: center;
     gap: 5%;
 }
+
+
+/* Tabela */
+table, th, td {
+    border: 1px solid black;
+    color: black;
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+table td {
+    border: 1px solid black;
+}
+    
+th, td{
+    border: none;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+td {
+    width: 500px;
+    text-align: center;
+}
+    
+th{
+    font-weight: bold;
+}
+
+table .lista_reservados:hover:nth-child(1n + 2) {
+    background-color: rgb(37, 37, 37);
+    color: white;
+}
+
+table .lista_disponiveis:hover:nth-child(1n + 1), 
+table .lista_disponiveis:hover:nth-child(1n + 1) .text {
+    background-color: rgb(49, 49, 49);
+    color: white;
+}
+
+tr .periodo {
+    width: 130px;
+}
+
+/* Titulos */
+h1 {
+    font-size: 2em;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1020px) {
+
+    .btn-nav {
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+        color: black;
+        background-color: yellow;
+        height: 50px;
+        width: 125px;
+        border-radius: 10rem;
+        border-color: white;
+        border-style: hidden;
+        font-size: 1.2em;
+    }
+    th, td {
+        font-size: 1em;
+    }
+    h1 {
+        font-size: 1.25em;
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
 /* Alteração tema claro e escuro */
 body.light {
     background-color: rgb(255, 255, 255);
@@ -378,80 +461,3 @@ body.light {
 .fa-sun {
     color: #f39c12;
 }
-
-/* Tabela */
-table, th, td {
-    border: 1px solid white;
-}
-    
-table {
-    border-collapse: collapse;
-    background-color: rgb(92, 92, 92);
-    border:none;
-}
-    
-th, td .disponiveis{
-    border: none;
-    padding: 10px;
-    text-align: center;
-    width: 500px;
-    font-size: 1.5em;
-}
-    
-th{
-    font-weight: bold;
-}
-
-tr {
-    width: 500px;
-}
-
-tr:nth-child(even) {
-    background-color: rgb(126, 126, 126);
-    
-}
-
-table .lista_reservados:hover:nth-child(1n + 2) {
-    background-color: rgb(37, 37, 37);
-}
-
-table .lista_disponiveis:hover:nth-child(1n + 1) {
-    background-color: rgb(37, 37, 37);
-}
-
-/* Titulos */
-h1 {
-    font-size: 2em;
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-@media screen and (max-width: 1020px) {
-
-    .btn-nav {
-        margin-top: 5px;
-        margin-left: 5px;
-        margin-right: 5px;
-        color: black;
-        background-color: yellow;
-        height: 50px;
-        width: 125px;
-        border-radius: 10rem;
-        border-color: white;
-        border-style: hidden;
-        font-size: 1.2em;
-    }
-    th, td {
-        font-size: 1em;
-    }
-    h1 {
-        font-size: 1.25em;
-        margin-left: 15px;
-        margin-right: 15px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-}
-

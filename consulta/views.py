@@ -33,17 +33,17 @@ def mostrarEnsalamentoLabs(request):
             labs_disponiveis_matutino = []
             for lab in todos_labs:
                 if not ReservasLaboratorios.objects.filter(laboratorio=lab).filter(data_reserva=data).filter(bloco=bloco).filter(periodo=1):
-                    labs_disponiveis_matutino.append(f'{lab.nome} {lab.bloco}{lab.numero_sala} Matutino')
+                    labs_disponiveis_matutino.append(f'{lab.nome} {lab.bloco}{lab.numero_sala}')
 
             labs_disponiveis_vespertino = []
             for lab in todos_labs:
                 if not ReservasLaboratorios.objects.filter(laboratorio=lab).filter(data_reserva=data).filter(bloco=bloco).filter(periodo=2):
-                    labs_disponiveis_vespertino.append(f'{lab.nome} {lab.bloco}{lab.numero_sala} Vespertino')
+                    labs_disponiveis_vespertino.append(f'{lab.nome} {lab.bloco}{lab.numero_sala}')
 
             labs_disponiveis_noturno = []
             for lab in todos_labs:
                 if not ReservasLaboratorios.objects.filter(laboratorio=lab).filter(data_reserva=data).filter(bloco=bloco).filter(periodo=3):
-                    labs_disponiveis_noturno.append(f'{lab.nome} {lab.bloco}{lab.numero_sala} Noturno')
+                    labs_disponiveis_noturno.append(f'{lab.nome} {lab.bloco}{lab.numero_sala}')
 
             return render(request, 'ensalamento_labs.html', {'labs_disponiveis_matutino': labs_disponiveis_matutino,
                                                              'labs_disponiveis_vespertino': labs_disponiveis_vespertino,

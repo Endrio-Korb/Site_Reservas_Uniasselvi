@@ -55,15 +55,20 @@
                                 {% if labs_disponiveis_noturno %}
                                     <div class="container">
                                         <table>
+                                            <tr>
+                                                <th>Laboratório</th>
+                                                <th>Periodo</th>
+                                            </tr>
                                             {% for lab in labs_disponiveis_noturno %}
                                                 <tr class='lista_disponiveis'>
-                                                    <td class="text-table disponiveis">{{lab}}</td>
+                                                    <td class="text text-table">{{lab}}</td>
+                                                    <td class="periodo text text-table">Noturno</td>
                                                 </tr>
                                             {% endfor %}
                                         </table>
                                     </div>
                                 {% else  %}
-                                    <p class='text-center'>Não há nenhum laboratório dispónivel no periodo matutino</p>
+                                    <p class='text text-center'>Não há nenhum laboratório dispónivel no periodo matutino</p>
                                 {% endif %}
                             </div>
 
@@ -73,7 +78,8 @@
                                         <table>
                                             {% for lab in labs_disponiveis_vespertino %}
                                                 <tr class='lista_disponiveis'>
-                                                    <td class="text-table disponiveis">{{lab}}</td>
+                                                    <td class="text text-table">{{lab}}</td>
+                                                    <td class="periodo text text-table">Vespertino</td>
                                                 </tr>
                                             {% endfor %}
                                         </table>
@@ -89,7 +95,8 @@
                                         <table>
                                             {% for lab in labs_disponiveis_matutino %}
                                                 <tr class='lista_disponiveis'>
-                                                    <td class="text-table disponiveis">{{lab}}</td>
+                                                    <td class="text text-table">{{lab}}</td>
+                                                    <td class="periodo text text-table">Matutino</td>
                                                 </tr>
                                             {% endfor %}
                                         </table>
