@@ -41,7 +41,9 @@
 
 
     {% else %}
-        <p class="text text-center">Você já está logado, gostaria de <a href="{% url 'usuarios:logout' %} ">sair</a>?</p>
+        <div class="container">
+            <p class="text text-center">Ocorreu algum problema ou você não tem permissão para acessar essa página</p>
+        </div>
     {% endif %}
 
 {% endblock content %}

@@ -15,7 +15,7 @@
                
                {% comment %} Seleção de bloco {% endcomment %}
                   <option class='input' selected>Selecione o Bloco</option>
-                  {% for bloco in blocos %}
+                  {% for bloco in object_list %}
                      <option value="{{bloco.id_bloco}}">{{bloco.bloco}}</option>
                   {% endfor %}
 
