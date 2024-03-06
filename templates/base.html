@@ -16,32 +16,42 @@
 
   {% comment %} Barra de navegação {% endcomment %}
   <nav class="navbar">
-    <div class="container-flex">
-      {% comment %} Botão para reserva do laboratórios {% endcomment %}
+    <ul>
+      {% comment %} Link para reserva do laboratórios {% endcomment %}
       {% if request.user.is_authenticated %}
-        <form action="{% url "reservas:reservar_laboratorio" %}" method="GET"> {% csrf_token %}
-          <button class="btn btn-nav">Reservar Laboratório</button>
-        </form>
+        <li>
+          <a href="{% url "reservas:reservar_laboratorio" %}">Reservar Laboratório</a>
+        </li>
       {% endif %}
-
+      
       {% comment %} Botão para consulta de reservas {% endcomment %}
-      <form action="{% url 'consulta:consulta' %}" method="GET"> {% csrf_token %}
-        <button class="btn btn-nav">Consultar Reservas</button>
-      </form>
-
+      <li>
+        <a href="{% url "consulta:consulta" %}">Consultar Reserva</a>
+      </li>
+      
       {% comment %} Nome de usuario ou botão de login {% endcomment %}
       {% if request.user.is_authenticated  %}
-            <a href="#">Olá {{request.user | title}}</a>
-        <form action="{% url 'usuarios:logout' %}" method="GET"> {% csrf_token %}
-          <button class="btn btn-nav">Sair</button>
-        </form>
+        <li class='dropdown'>  
+          <a href="#">Olá {{request.user | title}}</a>
+
+          <div class="dropdown-menu">
+            <a href="#">Meus dados</a>
+            <a href="{% url "usuarios:logout" %}">Sair</a>
+          </div>
+        </li>
       {% else %}
-      <form action="{% url 'usuarios:login' %}" method="GET"> {% csrf_token %}
-        <button class="btn btn-nav">Entrar</button>
-      </form>
+        <li>
+          <a href="{% url "usuarios:login" %}">Entrar</a>
+        </li>
       {% endif %}
 
-
+        {% comment %} Link para conversa no whatsapp {% endcomment %}
+      <li  id="">
+        <a id='' href="https://wa.me/+5547984935353?text=Gostaria%20de%20solicitar%20reserva%20de%20um%20laboratorio" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i>Solicitar Reserva</a>
+      </li>
+      
+    </ul>
       {% comment %} Checkbox para alterar de tema claro para escuro {% endcomment %}
       {% comment %} <input type="checkbox" name="checkbox-dark" id="chk-dark">
       <label class='label-dark' for="chk-dark">
@@ -49,20 +59,11 @@
         <i class='fas fa-sun'></i>
         <div class="teme-ball"></div>
       </label> {% endcomment %}
-    </div>
   </nav>
 
   {% comment %} Conteudo das outras páginas {% endcomment %}
   {% block content %}{% endblock content %} 
     
-  {% comment %} Link para conversa no whatsapp {% endcomment %}
-  <footer class='container'>
-    <div id="fundo-whats">
-      <a id='link_whatsapp' href="https://wa.me/+5547984935353?text=Gostaria%20de%20solicitar%20reserva%20de%20um%20laboratorio" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>Solicitar Reserva</a>
-    </div>
-        
-  </footer>
 
 
   {% comment %} Link para arquivo JS do projetor {% endcomment %}

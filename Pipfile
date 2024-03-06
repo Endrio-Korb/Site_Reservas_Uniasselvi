@@ -8,6 +8,7 @@ django = "*"
 mysqlclient = "*"
 python-dotenv = "*"
 pipfile = "*"
+django-braces = "*"
 
 [dev-packages]
 pipfile = "*"

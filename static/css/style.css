@@ -12,22 +12,20 @@ body {
 .text-table {
     color: white;
 }
-
+.tittle,
 .text {
-    color: yellow;
+    color: black;
     font-size: 1.5em;
-    text-shadow: 1px 1px 1px black ;
 }
+
+.tittle {
+    font-size: 3em;
+}
+
 .text-center {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.tittle {
-    color: yellow;
-    text-shadow: 2px 2px 1px black;
-    font-size: 3em;
 }
 
 .sucesso,
@@ -106,6 +104,55 @@ select {
 .navbar {
     height: 70px;
     margin-bottom: 50px;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav li a {
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    padding: 15px;
+}
+
+nav li a:hover {
+    background-color: lightgray;
+}
+.dropdown-menu {
+    position: absolute;
+    box-shadow: 0 0 2px black;
+    display: none;
+}
+
+.dropdown-menu a {
+    display: block;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+#link_whatsapp {
+    text-decoration: none;
+    font-size: 1.5em;
+    color: white;
+    
+}
+
+#fundo-whats {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(0, 201, 30);
+    border: 3px solid rgb(0, 152, 16);
+    height: 50px;
+    width: 230px;
+    border-radius: 10rem;
+
+    transition: transform 0.3s;
 }
 
 /* Botões */
@@ -426,24 +473,3 @@ h1 {
     }
 }
 
-
-#link_whatsapp {
-    text-decoration: none;
-    font-size: 1.5em;
-    color: white;
-    
-}
-
-#fundo-whats {
-    margin-top: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:rgb(0, 201, 30);
-    border: 3px solid rgb(0, 152, 16);
-    height: 50px;
-    width: 230px;
-    border-radius: 10rem;
-
-    transition: transform 0.3s;
-}
