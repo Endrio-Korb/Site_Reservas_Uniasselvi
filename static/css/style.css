@@ -330,8 +330,9 @@ th{
     font-weight: bold;
 }
 
-table .lista_reservados:hover:nth-child(1n + 2) {
-    background-color: rgb(37, 37, 37);
+table .lista_reservados:hover:nth-child(1n + 2),
+table .lista_reservados:hover:nth-child(1n + 2) .text {
+    background-color:lightgray;
     color: white;
 }
 
