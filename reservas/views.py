@@ -118,15 +118,14 @@ class Editar(UpdateView):
         messages.success(self.request,'Sucesso')
         return super(Editar, self).form_valid(form)
     
-class CancelarReserva(DeleteView):
-    model = ReservasLaboratorios
-    fields = ('laboratorio', 'data_reserva', 'bloco', 'periodo', 'professor')
-    template_name = 'cancelar.html'
-    success_url = reverse_lazy('consulta')
 
-    def form_valid(self, form):
-        messages.success(self.request,'Sucesso')
-        return super(Editar, self).form_valid(form)
+def cancelar(request, pk):
+    reserva = get_object_or_404(ReservasLaboratorios, pk=pk)
+    reserva.delete()
+    sucesso = "Reserva Cancelada"
+    blocos = Blocos.objects.all()
+    return render(request, 'consulta.html', {'sucesso':sucesso,
+                                             'blocos':blocos})
 
 
     
