@@ -3,14 +3,15 @@ from .models import Periodos, Blocos
 from professores.models import Professores
 from django.contrib.auth.models import User
 
-from django.shortcuts import render, get_object_or_404, HttpResponse, HttpResponseRedirect
 
+from django.shortcuts import render, get_object_or_404, HttpResponse, HttpResponseRedirect
+from django.urls import reverse_lazy
 
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse_lazy
 from django.contrib.auth import authenticate
+from django.contrib import messages
 from braces.views import GroupRequiredMixin
-from django.views.generic import ListView
+from django.views.generic import ListView, UpdateView, DeleteView
 
 
 
@@ -107,3 +108,25 @@ def registrarReservarLaboratorio(request):
             return render(request, 'consulta.html', {'blocos': blocos,
                                                       'sucesso': sucesso})
         
+class Editar(UpdateView):
+    model = ReservasLaboratorios
+    fields = ('laboratorio', 'data_reserva', 'bloco', 'periodo', 'professor')
+    template_name = 'editar.html'
+    success_url = reverse_lazy('editar')
+
+    def form_valid(self, form):
+        messages.success(self.request,'Sucesso')
+        return super(Editar, self).form_valid(form)
+    
+class CancelarReserva(DeleteView):
+    model = ReservasLaboratorios
+    fields = ('laboratorio', 'data_reserva', 'bloco', 'periodo', 'professor')
+    template_name = 'cancelar.html'
+    success_url = reverse_lazy('consulta')
+
+    def form_valid(self, form):
+        messages.success(self.request,'Sucesso')
+        return super(Editar, self).form_valid(form)
+
+
+    
