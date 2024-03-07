@@ -40,7 +40,7 @@
           <a href="#">Olá {{request.user | title}}</a>
 
           <div class="dropdown-menu">
-            <a href="#">Meus dados</a>
+            <a href="{% url "usuarios:dados" %}">Meus dados</a>
             <a href="{% url "usuarios:logout" %}">Sair</a>
           </div>
         </li>
