@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from .models import ReservasLaboratorios, Laboratorios
 from .models import Periodos, Blocos
 from professores.models import Professores
@@ -7,11 +8,11 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404, HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
 
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import authenticate
 from django.contrib import messages
 from braces.views import GroupRequiredMixin
-from django.views.generic import ListView, UpdateView, DeleteView
+from django.views.generic import ListView, UpdateView, DeleteView, DetailView
 
 
 
@@ -110,20 +111,13 @@ class Editar(UpdateView):
     
 
 
-class CancelarForm(GroupRequiredMixin, ListView):
-    pk = 16
+class CancelarForm(GroupRequiredMixin, DeleteView):
     group_required = u'Funcionarios'
     model = ReservasLaboratorios
-    queryset = ReservasLaboratorios.objects.get(pk=pk)
+    context_object_name = 'laboratorio'
     template_name = 'cancelar.html'
+    success_url = reverse_lazy('consulta:consulta')
 
-def cancelar(request, pk):
-    reserva = get_object_or_404(ReservasLaboratorios, pk=pk)
-    reserva.delete()
-    sucesso = "Reserva Cancelada"
-    blocos = Blocos.objects.all()
-    return render(request, 'consulta.html', {'sucesso':sucesso,
-                                             'blocos':blocos})
 
 
 def editar(request, pk):

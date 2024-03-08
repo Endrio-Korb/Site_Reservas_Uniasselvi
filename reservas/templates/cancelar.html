@@ -6,11 +6,15 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="tittle text text-center">Cancelar Reserva</h1>
-                <p class="text text-center">Tem certeza que deseja cancelar a reserva:</p>
-                <p class="text-text-center">{{object_list.professor}} {{object_list.laboratorio.nome}} {{object_list.bloco}}{{object_list.laboratorio.numero_sala}}
-                     {{object_list.data_reserva}} {{object_list.periodo}}</p>
-                <a href="{% url "reservas:cancelar" {{object_list.id}} %}">Sim, cancelar reserva</a>
+                <form method="post">
+                    {% csrf_token %}
+                
+                    <p class='text text-center'>Você tem certeza que quer excluir o laboratorio {{laboratorio.professor}} {{ laboratorio.laboratorio.nome }} {{laboratorio.bloco}}{{labotorio.numero_sala}}
+                         {{laboratorio.data_reserva}} {{laboratorio.periodo}}? </p>
+
+                    <button>Excluir</button>
+                </form>
+
             </div>
         </div>
     </div>

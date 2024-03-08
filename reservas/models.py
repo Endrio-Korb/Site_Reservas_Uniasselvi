@@ -44,4 +44,5 @@ class ReservasLaboratorios(models.Model):
 
     class Meta:
         db_table = "tb_reservas_laboratorios"
+        permissions = (('can_edit','can_delete'),)
 
