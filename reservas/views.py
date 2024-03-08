@@ -22,16 +22,6 @@ class ReservarLabs(GroupRequiredMixin, ListView):
     template_name = 'reserva_labs.html'
 
 
-
-#@login_required(login_url='/auth/login/')
-# def ReservarLaboratorio(request):
-#     #usuario = request.user
-    
-
-
-#     blocos = Blocos.objects.all()
-#     return render(request, 'reserva_labs.html', {'blocos': blocos})
-
 def modules(request):
     bloco = request.GET.get('blocos')
 
@@ -118,6 +108,14 @@ class Editar(UpdateView):
         messages.success(self.request,'Sucesso')
         return super(Editar, self).form_valid(form)
     
+
+
+class CancelarForm(GroupRequiredMixin, ListView):
+    pk = 16
+    group_required = u'Funcionarios'
+    model = ReservasLaboratorios
+    queryset = ReservasLaboratorios.objects.get(pk=pk)
+    template_name = 'cancelar.html'
 
 def cancelar(request, pk):
     reserva = get_object_or_404(ReservasLaboratorios, pk=pk)
