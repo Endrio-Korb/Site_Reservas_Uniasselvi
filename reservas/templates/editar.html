@@ -3,17 +3,24 @@
 
 {% block content %}
 
-    {{editar.laboratorio.nome}}
-    {{editar.professor}}
-    {{editar.data_reserva}}
-    {{editar.periodo}}
+    {{laboratorio.laboratorio.nome}}
+    {{laboratorio.professor}}
+    {{laboratorio.data_reserva}}
+    {{laboratorio.periodo}}
 
     <div class="container">
         <div class="row">
             <div class="col">
-                <select name="" id="" disabled="disabled">
-                    <option value="" selected>{{editar.bloco}}</option>
-                </select>
+                <h1 class="tittle text-center text">Editar Reserva</h1>
+                <form method="post"> {% csrf_token %}
+                    <p class="text text-center">{{laboratorio.laboratorio.nome}} {{laboratorio.periodo}}</p>
+                    <input type="text" placeholder='Nome do professor'>
+                    <input type="date" name="data" id="">
+                    
+                
+                    
+                    <button>Atualizar</button>
+                </form>
             </div>
         </div>
     </div>

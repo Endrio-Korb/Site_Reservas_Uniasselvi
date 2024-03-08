@@ -99,15 +99,33 @@ def registrarReservarLaboratorio(request):
             return render(request, 'consulta.html', {'blocos': blocos,
                                                       'sucesso': sucesso})
         
-class Editar(UpdateView):
+class Editar(GroupRequiredMixin, UpdateView):
+    group_required = u'Funcionarios'
     model = ReservasLaboratorios
-    fields = ('laboratorio', 'data_reserva', 'bloco', 'periodo', 'professor')
+    fields = '__all__'
     template_name = 'editar.html'
-    success_url = reverse_lazy('editar')
+    context_object_name = 'laboratorio'
+    blocos = Blocos.objects.all()
+    periodo = Periodos.objects.all()
 
-    def form_valid(self, form):
-        messages.success(self.request,'Sucesso')
-        return super(Editar, self).form_valid(form)
+    
+    contexto = {'blocos':blocos,
+                'periodos': periodo}
+
+    def get_object(self, queryset=None):
+        laboratorio = None
+
+        id = self.kwargs.get(self.pk_url_kwarg)
+
+        if id is not None:
+            laboratorio = ReservasLaboratorios.objects.filter(id=id).first()
+
+
+        return laboratorio
+
+    # def form_valid(self, form):
+    #     messages.success(self.request,'Sucesso')
+    #     return super(Editar, self).form_valid(form)
     
 
 
