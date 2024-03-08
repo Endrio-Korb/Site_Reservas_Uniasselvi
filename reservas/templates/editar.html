@@ -3,22 +3,17 @@
 
 {% block content %}
 
-    {{laboratorio.laboratorio.nome}}
-    {{laboratorio.professor}}
-    {{laboratorio.data_reserva}}
-    {{laboratorio.periodo}}
-
     <div class="container">
         <div class="row">
             <div class="col">
                 <h1 class="tittle text-center text">Editar Reserva</h1>
                 <form method="post"> {% csrf_token %}
                     <p class="text text-center">{{laboratorio.laboratorio.nome}} {{laboratorio.periodo}}</p>
+                    <p>{{laboratorio.professor}}</p>
                     <input type="text" placeholder='Nome do professor'>
+                    <p>{{laboratorio.data_reserva}}</p>
                     <input type="date" name="data" id="">
-                    
-                
-                    
+
                     <button>Atualizar</button>
                 </form>
             </div>

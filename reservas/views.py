@@ -2,9 +2,9 @@ from django.db.models.query import QuerySet
 from .models import ReservasLaboratorios, Laboratorios
 from .models import Periodos, Blocos
 from professores.models import Professores
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
-
+from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, get_object_or_404, HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
 
@@ -12,8 +12,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import authenticate
 from django.contrib import messages
 from braces.views import GroupRequiredMixin
-from django.views.generic import ListView, UpdateView, DeleteView, DetailView
-
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 
 
 class ReservarLabs(GroupRequiredMixin, ListView):
@@ -98,47 +97,36 @@ def registrarReservarLaboratorio(request):
             sucesso = 'Reserva registrada com sucesso'
             return render(request, 'consulta.html', {'blocos': blocos,
                                                       'sucesso': sucesso})
-        
+
+
+# Editar uma tabela do bando de dados
 class Editar(GroupRequiredMixin, UpdateView):
     group_required = u'Funcionarios'
     model = ReservasLaboratorios
-    fields = '__all__'
+    fields= "__all__"
     template_name = 'editar.html'
     context_object_name = 'laboratorio'
-    blocos = Blocos.objects.all()
-    periodo = Periodos.objects.all()
-
-    
-    contexto = {'blocos':blocos,
-                'periodos': periodo}
-
-    def get_object(self, queryset=None):
-        laboratorio = None
-
-        id = self.kwargs.get(self.pk_url_kwarg)
-
-        if id is not None:
-            laboratorio = ReservasLaboratorios.objects.filter(id=id).first()
-
-
-        return laboratorio
-
-    # def form_valid(self, form):
-    #     messages.success(self.request,'Sucesso')
-    #     return super(Editar, self).form_valid(form)
+    success_url = reverse_lazy('consulta:consulta')
+    messages = 'Reserva atualizada com sucesso'
     
 
-
+# Apagar uma reserva do banco de dados
 class CancelarForm(GroupRequiredMixin, DeleteView):
     group_required = u'Funcionarios'
     model = ReservasLaboratorios
     context_object_name = 'laboratorio'
     template_name = 'cancelar.html'
     success_url = reverse_lazy('consulta:consulta')
+    messages = 'Reserva cancelada com sucesso'
 
+
+
+def is_funcionario(user):
+    return user.groups.filter(name='Funcionarios').exists()
 
 
 def editar(request, pk):
+
     texto = ReservasLaboratorios.objects.get(pk=pk)
     editar = ReservasLaboratorios.objects.get(pk=pk)
 

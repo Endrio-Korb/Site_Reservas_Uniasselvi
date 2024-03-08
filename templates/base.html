@@ -19,13 +19,8 @@
     <ul>
       {% comment %} Link para reserva do laboratórios {% endcomment %}
       {% if request.user.is_authenticated %}
-        <li class='dropdown'>
-          <a href="#">Laboratórios</a>
-          <div class="dropdown-menu">
+        <li>
             <a href="{% url "reservas:reserva_form" %}">Registrar Reserva</a>
-            <a href="#">Editar Reserva</a>
-            <a href="#">Cancelar Reserva</a>
-          </div>
         </li>
       {% endif %}
       
