@@ -32,18 +32,27 @@
                                                 <th class='text text-table'>Laboratório</th>
                                                 <th class='text text-table'>Periodo</th>
                                             </tr>
-                
-                                            {% for lab in labs_reservados %}
-                                            <tr class='lista_reservados'>
-                                                <td class='text text-table'>{{lab.professor.nome}}</td>
-                                                <td class='lab text text-table'>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
-                                                <td class='text text-table'>{{lab.periodo.nome_periodo}}</td>
-                                                <td id='acoes'>
-                                                    <a href="{% url "reservas:editar" lab.laboratorio.id %}"><i class="fa-regular fa-pen-to-square"></i></a>
-                                                    <a href="{% url "reservas:cancelar" lab.id %}"><i class="fa-regular fa-trash-can"></i></a>
-                                                </td>
-                                            </tr>
-                                            {% endfor %}
+                                            {% if request.user.is_authenticated %}
+                                                {% for lab in labs_reservados %}
+                                                    <tr class='lista_reservados'>
+                                                        <td class='text text-table'>{{lab.professor.nome}}</td>
+                                                        <td class='lab text text-table'>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
+                                                        <td class='text text-table'>{{lab.periodo.nome_periodo}}</td>
+                                                        <td id='acoes'>
+                                                            <a href="{% url "reservas:editar" lab.id %}"><i class="fa-regular fa-pen-to-square"></i></a>
+                                                            <a href="{% url "reservas:cancelar" lab.id %}"><i class="fa-regular fa-trash-can"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% else %}
+                                                {% for lab in labs_reservados %}
+                                                    <tr class='lista_reservados'>
+                                                        <td class='text text-table'>{{lab.professor.nome}}</td>
+                                                        <td class='lab text text-table'>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
+                                                        <td class='text text-table'>{{lab.periodo.nome_periodo}}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endif %}
                                         </table>
                                     </div>
                                 {% else %}

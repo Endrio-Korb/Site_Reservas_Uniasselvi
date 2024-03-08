@@ -1,7 +1,7 @@
 from django.urls import path
 
 from . import views
-from .views import ReservarLabs, Editar, cancelar
+from .views import ReservarLabs, Editar, cancelar, editar
 
 app_name = "reservas"
 
@@ -11,7 +11,9 @@ urlpatterns = [
 
     
     path('reservas/', views.ReservarLabs.as_view(), name='reserva_form'),
-    path('editar/<int:pk>', Editar.as_view(), name='editar'),
+
+    #path('editar/<int:pk>', Editar.as_view(), name='editar'),
+    path('reservas/<int:pk>/editar', editar, name='editar'),
 
     path('reservas/<int:pk>/cancelar/', cancelar, name='cancelar')
 ]
