@@ -128,4 +128,10 @@ def cancelar(request, pk):
                                              'blocos':blocos})
 
 
+def editar(request, pk):
+    texto = ReservasLaboratorios.objects.get(pk=pk)
+    editar = ReservasLaboratorios.objects.get(pk=pk)
+
+    return render(request, 'editar.html', {'texto':texto,
+                                           'editar':editar})
     
