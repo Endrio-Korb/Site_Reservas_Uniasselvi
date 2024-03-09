@@ -121,15 +121,16 @@ class CancelarForm(GroupRequiredMixin, DeleteView):
 
 
 
-def is_funcionario(user):
-    return user.groups.filter(name='Funcionarios').exists()
+# def is_funcionario(user):
+#     return user.groups.filter(name='Funcionarios').exists()
 
 
 def editar(request, pk):
-
-    texto = ReservasLaboratorios.objects.get(pk=pk)
-    editar = ReservasLaboratorios.objects.get(pk=pk)
-
-    return render(request, 'editar.html', {'texto':texto,
-                                           'editar':editar})
+    usuario = request.user
+    if usuario.groups.filter(name='Funcionarios').exists():
+        reserva = ReservasLaboratorios.objects.get(pk=pk)
+        return render(request, 'editar.html', {'reserva':reserva})
+    else:
+        erro = 'Ocorreu algum problema ou você não tem permissão para acessar essa página'
+        return render(request,'editar.html', {'erro':erro})
     
