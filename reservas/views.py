@@ -103,11 +103,11 @@ def registrarReservarLaboratorio(request):
 class Editar(GroupRequiredMixin, UpdateView):
     group_required = u'Funcionarios'
     model = ReservasLaboratorios
-    fields= "__all__"
+    fields= ('professor', 'data_reserva')
     template_name = 'editar.html'
-    context_object_name = 'laboratorio'
+    context_object_name = 'reserva'
     success_url = reverse_lazy('consulta:consulta')
-    messages = 'Reserva atualizada com sucesso'
+    sucesso = 'Reserva atualizada com sucesso'
     
 
 # Apagar uma reserva do banco de dados
