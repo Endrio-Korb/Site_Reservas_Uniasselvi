@@ -100,14 +100,18 @@ def registrarReservarLaboratorio(request):
 
 
 # Editar uma tabela do bando de dados
-class Editar(GroupRequiredMixin, UpdateView):
-    group_required = u'Funcionarios'
-    model = ReservasLaboratorios
-    fields= ('professor', 'data_reserva')
-    template_name = 'editar.html'
-    context_object_name = 'reserva'
-    success_url = reverse_lazy('consulta:consulta')
-    sucesso = 'Reserva atualizada com sucesso'
+# class Editar(GroupRequiredMixin, UpdateView):
+#     group_required = u'Funcionarios'
+#     model = ReservasLaboratorios
+#     fields= ('professor', 'data_reserva', 'periodo')
+#     template_name = 'editar.html'
+#     context_object_name = 'reserva'
+#     success_url = reverse_lazy('consulta:consulta')
+
+#     def form_valid(self, form):
+#         form
+#         return super().form_valid(form)
+    
     
 
 # Apagar uma reserva do banco de dados
@@ -118,12 +122,6 @@ class CancelarForm(GroupRequiredMixin, DeleteView):
     template_name = 'cancelar.html'
     success_url = reverse_lazy('consulta:consulta')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["sucesso"] = 'Reserva cancelada com sucesso'
-        return context
-    
-
 
 
 # def is_funcionario(user):
@@ -133,26 +131,32 @@ class CancelarForm(GroupRequiredMixin, DeleteView):
 def editar_form(request, pk):
     usuario = request.user
     if usuario.groups.filter(name='Funcionarios').exists():
+        lab = pk
         reserva = ReservasLaboratorios.objects.get(pk=pk)
-        return render(request, 'editar.html', {'reserva':reserva})
+        return render(request, 'editar.html', {'reserva':reserva, 'lab': lab})
     else:
         erro = 'Ocorreu algum problema ou você não tem permissão para acessar essa página'
         return render(request,'editar.html', {'erro':erro})
     
 def editar(request, pk):
     
-    if request.method == 'GET':
+    if request.method == 'POST':
         professor = request.POST.get('professor')
         data = request.POST.get('data')
 
-        if not professor == None or not data == None:
-            ReservasLaboratorios.objects.filter(pk=pk).update(professor=professor).update(data_reserva=data)
+        if  professor == None or  data == None:
+            aviso = 'Prencha todos os campos'
+            pk = pk
+            return render(request, 'editar.html', {'aviso':aviso,
+                                                'pk': pk})
+        else:
+            if not Professores.objects.filter(nome=professor):
+                salva_nome_professor = Professores.objects.create(
+                nome = f'{professor}')
+                salva_nome_professor.save()
+            id_professor = Professores.objects.get(nome=professor)
+            reserva = ReservasLaboratorios.objects.filter(pk=pk)
+            reserva.update(professor=id_professor).update(data_reserva=data)
             sucesso = "Reserva atualizada com sucesso"
             return render(request, 'consulta.html', {'sucesso':sucesso})
         
-    else:
-        aviso = 'Prencha todos os campos'
-        pk = pk
-        return render(request, 'editar.html', {'aviso':aviso,
-                                               'pk': pk})
-    

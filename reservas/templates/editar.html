@@ -6,28 +6,12 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <form method="post">
-                    {% csrf_token %}
+                <form method="POST" action='{% url "reservas:editar" lab %}'> {% csrf_token %}
 
-                    <h1 class="tittle text text-center">Editar reserva</h1>
-
-                    <p class='text text-center'>{{reserva.laboratorio.nome}} {{reserva.bloco}}{{reserva.numero_sala}} {{reserva.data_reserva}}</p>
-                    
-                    <p class="text text-center">Selecione o professor</p>
-                    <div>
-                        {{form.professor}}
-                        <p>{{reserva.professor}}</p>
-                    </div>
-
-                    <p class="text text-center">Selecione a data</p>
-                    <div>
-                        <input type="date" {{form.data_reserva}}>
-                        <p>{{reserva.data_reserva}}</p>
-                    </div>
-
-                    <input type="submit" value"Save">
+                    <input type="date" name='data'>
+                    <input type="text" name='professor' placeholder='Digite o nome do professor' >
+                    <button class='btn' >Atualizar</button>
                 </form>
-            </div>
         </div>
     </div>
 
