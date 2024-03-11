@@ -9,10 +9,13 @@
                 <form method="post">
                     {% csrf_token %}
                 
-                    <p class='text text-center'>Você tem certeza que quer excluir o laboratorio {{laboratorio.professor}} {{ laboratorio.laboratorio.nome }} {{laboratorio.bloco}}{{labotorio.numero_sala}}
-                         {{laboratorio.data_reserva}} {{laboratorio.periodo}}? </p>
+                    <p class='text text-center'>Você tem certeza que quer cancelar:</p>
+                    <p class='text text-center'>{{reserva.laboratorio.nome}} {{laboratorio.bloco}}{{labotorio.numero_sala}}</p>
+                    <p class='text text-center'> do {{reserva.professor}}
+                    <p class="text text-center"> do dia  {{reserva.data_reserva}}</p>
+                    <p class="text text-center"> no periodo {{reserva.periodo}}? </p>
 
-                    <button>Excluir</button>
+                    <button class='btn'>Excluir</button>
                 </form>
 
             </div>

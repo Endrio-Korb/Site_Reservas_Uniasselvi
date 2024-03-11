@@ -114,10 +114,15 @@ class Editar(GroupRequiredMixin, UpdateView):
 class CancelarForm(GroupRequiredMixin, DeleteView):
     group_required = u'Funcionarios'
     model = ReservasLaboratorios
-    context_object_name = 'laboratorio'
+    context_object_name = 'reserva'
     template_name = 'cancelar.html'
     success_url = reverse_lazy('consulta:consulta')
-    messages = 'Reserva cancelada com sucesso'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["sucesso"] = 'Reserva cancelada com sucesso'
+        return context
+    
 
 
 
