@@ -35,7 +35,7 @@
           <a href="#">Olá {{request.user | title}}</a>
 
           <div class="dropdown-menu">
-            <a href="{% url "usuarios:dados" %}">Meus dados</a>
+            {% comment %} <a href="{% url "usuarios:dados" %}">Meus dados</a> {% endcomment %}
             <a href="{% url "usuarios:logout" %}">Sair</a>
           </div>
         </li>

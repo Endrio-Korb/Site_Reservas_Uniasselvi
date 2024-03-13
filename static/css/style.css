@@ -5,7 +5,7 @@
 body {
     min-height: 100vh;
     background-image: url(../img/fundo4.jpg);
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
 }
 
