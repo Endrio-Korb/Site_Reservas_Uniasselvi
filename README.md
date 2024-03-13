@@ -12,3 +12,15 @@ Cadastro de Usuário
 Permissão de Usuarios
 Validações de Inputs
 Melhora no Layout
+
+===== Usuarios =====
+Adicionar página de dados do usário
+Adicionar validação do email
+Adicionar verificação de nome de usuaria já existente
+
+===== Reservas =====
+Pagina para edição de reservas
+Pagina de exclusão de reservas
+
+===== Consulta =====
+Pagina de laboratorios disponiveis precisa mostrar por periodo - ok

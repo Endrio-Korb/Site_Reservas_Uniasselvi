@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form method="POST" action='{% url "reservas:editar" lab %}'> {% csrf_token %}
+
+                    <input type="date" name='data'>
+                    <input type="text" name='professor' placeholder='Digite o nome do professor' >
+                    <button class='btn' >Atualizar</button>
+                </form>
+        </div>
+    </div>
+
+{% endblock content %}

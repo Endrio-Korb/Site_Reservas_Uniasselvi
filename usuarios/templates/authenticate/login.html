@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    {% comment %} Mensagem de erro {% endcomment %}
+    {% if erro %}
+    <div class="container-flex">
+        <div class="row">
+            <div class="erro">
+                <p class='mensagem_erro'>{{erro}}</p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% comment %} Mensagem de sucesso {% endcomment %}
+    {% if sucesso %}
+        <div class="container-flex">
+            <div class="row">
+                <div class="sucesso">
+                    <p class="mensagem_sucesso">{{sucesso}}</p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if not request.user.is_authenticated %}
+        <div class='container'>
+            <h2 class="text-center">Entrar na sua conta</h2>
+            <form  method="post" class="card"> {% csrf_token %}
+                <input class="input" type="text" name="usuario" id="" placeholder="Nome de usuario">
+                <input class="input" type="password" name="senha" placeholder="Digite a senha">
+
+                <button type="submit" class="btn">Entrar</button>
+
+            </form>
+
+            <p class="text text-center">Não possui uma conta? <a href="{% url 'usuarios:cadastrar' %}"> Criar conta</a></p>
+        </div>
+
+
+    {% else %}
+        <div class="container">
+            <p class="text text-center">Ocorreu algum problema ou você não tem permissão para acessar essa página</p>
+        </div>
+    {% endif %}
+
+{% endblock content %}

@@ -8,9 +8,10 @@ django = "*"
 mysqlclient = "*"
 python-dotenv = "*"
 pipfile = "*"
+django-braces = "*"
 
 [dev-packages]
 pipfile = "*"
 
 [requires]
-python_version = "3.11"
+python_version = "3.12"

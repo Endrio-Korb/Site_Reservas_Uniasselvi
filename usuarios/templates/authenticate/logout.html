@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <div class='container'>
+            <form  method="post" class="card"> {% csrf_token %}
+                <p class="text text-center">Você tem certeza que quer sair?</p>
+                <button type="submit">Sim, Sair</button>
+
+            </form>
+        </div>
+    {% else %}
+        <p class="text text-center">Você não está está logado, gostaria de<a href="{% url 'usuarios:login' %} "> entrar</a>?</p>
+    {% endif %}
+
+{% endblock content %}

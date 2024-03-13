@@ -23,6 +23,8 @@ urlpatterns = [
     path('consulta/', include('consulta.urls', namespace='consulta')),
     path('reservas/', include('reservas.urls', namespace='reservas')),
     path('professores/', include('professores.urls', namespace='professores')),
+    path('auth/', include('usuarios.urls', namespace='usuarios')),
+    path('auth/', include('django.contrib.auth.urls')),
 ]
     
 urlpatterns += [path('', RedirectView.as_view(url='/consulta/', permanent=True)),]

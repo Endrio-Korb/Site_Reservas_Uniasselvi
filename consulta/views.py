@@ -29,12 +29,25 @@ def mostrarEnsalamentoLabs(request):
             labs_reservados = ReservasLaboratorios.objects.filter(data_reserva=data).filter(bloco=bloco).order_by('periodo_id').order_by('laboratorio')
     
             todos_labs = Laboratorios.objects.filter(bloco=bloco)
-            labs_disponiveis = []
-            for lab in todos_labs:
-                if not ReservasLaboratorios.objects.filter(laboratorio=lab).filter(data_reserva=data).filter(bloco=bloco):
-                    labs_disponiveis.append(f'{lab.nome} {lab.bloco}{lab.numero_sala}')
 
-            return render(request, 'ensalamento_labs.html', {'labs_disponiveis': labs_disponiveis,
+            labs_disponiveis_matutino = []
+            for lab in todos_labs:
+                if not ReservasLaboratorios.objects.filter(laboratorio=lab).filter(data_reserva=data).filter(bloco=bloco).filter(periodo=1):
+                    labs_disponiveis_matutino.append(f'{lab.nome} {lab.bloco}{lab.numero_sala}')
+
+            labs_disponiveis_vespertino = []
+            for lab in todos_labs:
+                if not ReservasLaboratorios.objects.filter(laboratorio=lab).filter(data_reserva=data).filter(bloco=bloco).filter(periodo=2):
+                    labs_disponiveis_vespertino.append(f'{lab.nome} {lab.bloco}{lab.numero_sala}')
+
+            labs_disponiveis_noturno = []
+            for lab in todos_labs:
+                if not ReservasLaboratorios.objects.filter(laboratorio=lab).filter(data_reserva=data).filter(bloco=bloco).filter(periodo=3):
+                    labs_disponiveis_noturno.append(f'{lab.nome} {lab.bloco}{lab.numero_sala}')
+
+            return render(request, 'ensalamento_labs.html', {'labs_disponiveis_matutino': labs_disponiveis_matutino,
+                                                             'labs_disponiveis_vespertino': labs_disponiveis_vespertino,
+                                                             'labs_disponiveis_noturno':labs_disponiveis_noturno,
                                                             'labs_reservados':labs_reservados,
                                                             'data':data,
                                                             'nome_bloco':nome_bloco,

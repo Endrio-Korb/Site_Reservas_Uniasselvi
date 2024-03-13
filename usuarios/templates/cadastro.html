@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    {% comment %} Mensagem de erro {% endcomment %}
+    {% if erro %}
+        <div class="container-flex">
+            <div class="row">
+                <div class="erro">
+                    <p class='mensagem_erro'>{{erro}}</p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="container">
+        <h2 class="tittle text-center">Criar uma conta</h2>
+        <form action="{% url "usuarios:cadastrar" %}" method="POST"> {% csrf_token %}
+            
+            <input class='input'type="text" placeholder='Nome de usuário' name='usuario'>
+            <input class='input'type="email" placeholder='Digite seu email' name='email'>
+            <input class='input'type="password" placeholder='Digite sua senha' name='senha'>
+            <input class='input'type="password" placeholder='Confirme sua senha' name='confirmacao_senha'>
+            
+            <button type='submit' class='btn'>Cadastrar</button>
+        </form>
+    </div>
+    
+
+
+{% endblock content %}
