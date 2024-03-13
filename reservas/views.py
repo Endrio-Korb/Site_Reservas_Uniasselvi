@@ -99,21 +99,6 @@ def registrarReservarLaboratorio(request):
                                                       'sucesso': sucesso})
 
 
-# Editar uma tabela do bando de dados
-# class Editar(GroupRequiredMixin, UpdateView):
-#     group_required = u'Funcionarios'
-#     model = ReservasLaboratorios
-#     fields= ('professor', 'data_reserva', 'periodo')
-#     template_name = 'editar.html'
-#     context_object_name = 'reserva'
-#     success_url = reverse_lazy('consulta:consulta')
-
-#     def form_valid(self, form):
-#         form
-#         return super().form_valid(form)
-    
-    
-
 # Apagar uma reserva do banco de dados
 class CancelarForm(GroupRequiredMixin, DeleteView):
     group_required = u'Funcionarios'
@@ -123,11 +108,7 @@ class CancelarForm(GroupRequiredMixin, DeleteView):
     success_url = reverse_lazy('consulta:consulta')
 
 
-
-# def is_funcionario(user):
-#     return user.groups.filter(name='Funcionarios').exists()
-
-
+# Editar reserva do banco de dados
 def editar_form(request, pk):
     usuario = request.user
     if usuario.groups.filter(name='Funcionarios').exists():
