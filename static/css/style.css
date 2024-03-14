@@ -28,6 +28,10 @@ body {
     align-items: center;
 }
 
+.text-erro {
+    color:red;
+}
+
 .sucesso,
 .erro {
     display: flex;
