@@ -15,6 +15,20 @@ from braces.views import GroupRequiredMixin
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 
 
+def verificarReserva(lab,bloco, periodo, data):
+    verificar = ReservasLaboratorios.objects.filter(laboratorio=lab).filter(bloco_id=bloco).filter(data_reserva=data).filter(periodo_id=periodo)
+    return True if verificar else False
+
+def registrarReserva(lab, bloco, periodo, data, professor):
+        reserva = ReservasLaboratorios.objects.create(
+            data_reserva = f'{data}',
+            professor = Professores.objects.get(nome=professor),
+            periodo_id = f'{periodo}',
+            laboratorio = Laboratorios.objects.get(id=lab),
+            bloco_id = f'{bloco}'
+        )
+        reserva.save()
+
 class ReservarLabs(GroupRequiredMixin, ListView):
     group_required = u'Funcionarios'
     model = Blocos
@@ -70,30 +84,20 @@ def registrarReservarLaboratorio(request):
                                                         'mensagem_erro': mensagem_erro})
     
         
-
         if not Professores.objects.filter(nome=professor):
             salva_nome_professor = Professores.objects.create(
             nome = f'{professor}')
             salva_nome_professor.save()
 
-        verificar_reserva = ReservasLaboratorios.objects.filter(laboratorio=lab).filter(data_reserva=data).filter(bloco_id=bloco).filter(periodo_id=periodo).only('laboratorio')
 
-        if verificar_reserva:
+        if verificarReserva(lab, bloco, periodo, data):
             nome_lab = Laboratorios.objects.get(id=lab)
             str_periodo = Periodos.objects.get(id=periodo)
             erro = f'{nome_lab.nome} já está reservado no periodo {str_periodo} para data {data} '
-            return render(request, 'consulta.html', {'blocos':blocos,
+            return render(request, 'reserva_labs.html', {'blocos':blocos,
                                                      'erro':erro})
-        
         else:
-            reserva = ReservasLaboratorios.objects.create(
-                data_reserva = f'{data}',
-                professor = Professores.objects.get(nome=professor),
-                periodo_id = f'{periodo}',
-                laboratorio = Laboratorios.objects.get(id=lab),
-                bloco_id = f'{bloco}',
-            )
-            reserva.save()
+            registrarReserva(lab, bloco, periodo, data, professor)
             sucesso = 'Reserva registrada com sucesso'
             return render(request, 'consulta.html', {'blocos': blocos,
                                                       'sucesso': sucesso})
