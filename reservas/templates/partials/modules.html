@@ -33,7 +33,7 @@
             <select id='laboratorio' class='input' name="nome_lab" id="">
                <option selected>Selecione o Laboratório</option>
                {% for lab in laboratorios %}
-                  <option value="{{lab.id}}">{{lab.nome}}</option>
+                  <option value="{{lab.id}}">{{lab.nome}} {{lab.bloco}}{{lab.numero_sala}}</option>
                {% endfor %}
             </select>
          </div>
