@@ -18,7 +18,7 @@
   <nav class="navbar">
     <ul>
       {% comment %} Link para reserva do laboratórios {% endcomment %}
-      {% if request.user.is_authenticated %}
+      {% if request.user.groups.all.0.name == 'Funcionarios' %}
         <li>
             <a href="{% url "reservas:reserva_form" %}">Registrar Reserva</a>
         </li>

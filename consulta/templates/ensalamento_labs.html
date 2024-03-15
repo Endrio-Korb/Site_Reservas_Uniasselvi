@@ -32,7 +32,7 @@
                                                 <th class='text text-table'>Laboratório</th>
                                                 <th class='text text-table'>Periodo</th>
                                             </tr>
-                                            {% if request.user.is_authenticated %}
+                                            {% if request.user.groups.all.0.name == 'Funcionarios' %}
                                                 {% for lab in labs_reservados %}
                                                     <tr class='lista_reservados'>
                                                         <td class='text text-table'>{{lab.professor.nome}}</td>
