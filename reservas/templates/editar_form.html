@@ -4,28 +4,59 @@
 {% block content %}
 
     <div class="container">
-        {{erro}}
+        <h1 class="tittle text-center">Editar reserva</h1>
+        <h2 class="text-erro text-center">{{erro}}</h2>
         <div class="row">
             <div class="col">
                 {% if request.user.groups.all.0.name == 'Funcionarios' %}
                 <form method="POST" action='{% url "reservas:editar" id %}'> {% csrf_token %}
-                    
-                    <select  name="blocos" id='select-htmx'
-                    hx-get="{% url "reservas:editar_modules" %}"
-                    hx-trigger="change"
-                    hx-target="#editar_modules">
-                    
-                    {% comment %} Seleção de bloco {% endcomment %}
-                       <option class='input' selected>Selecione o Bloco</option>
-                       {% for bloco in blocos %}
-                          <option value="{{bloco.id_bloco}}">{{bloco.bloco}}</option>
-                       {% endfor %}
-     
-                    </select>
-                    <div id="editar_modules">
-                        {% include 'partials/editar_modules.html' %}
-                     </div>
+                    <table>
+                        <tr>
+                            <th>Reserva Atual</th>
+                            <th>Nova Reserva</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="container">
+                                   <p> Bloco: {{reserva.bloco}}</p>
+                                </div>
+                                <div class="container">
+                                    <p>Data: {{reserva.data_reserva|date:"d M Y"}}</p>
+                                </div>
+                                <div class="container">
+                                    <p>Periodo: {{reserva.periodo}}</p>
+                                </div>
+                                <div class="container">            
+                                    <p>{{reserva.laboratorio.nome}}</p>
+                                </div>
+                                <div class="container">
+                                    <p>Professor: {{reserva.professor}}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <select  name="blocos" id='select-htmx'
+                                hx-get="{% url "reservas:editar_modules" %}"
+                                hx-trigger="change"
+                                hx-target="#editar_modules">
+                                    
+                                    {% comment %} Seleção de bloco {% endcomment %}
+                                    <option class='input' selected>Selecione o Bloco</option>
+                                    {% for bloco in blocos %}
+                                        <option value="{{bloco.id_bloco}}">{{bloco.bloco}}</option>
+                                    {% endfor %}
+                                </select>
 
+                
+                         
+                                <div id="editar_modules">
+                                    {% include 'partials/editar_modules.html' %}
+                                </div>
+                                
+                            </td>
+              
+                        </tr>
+
+                    </table>
                     <button class='btn' >Atualizar</button>
                 </form>
                 {% else %}
