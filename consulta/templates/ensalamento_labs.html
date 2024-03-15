@@ -39,7 +39,7 @@
                                                         <td class='lab text text-table'>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
                                                         <td class='text text-table'>{{lab.periodo.nome_periodo}}</td>
                                                         <td id='acoes'>
-                                                            {% comment %} <a href="{% url "reservas:editar_form" lab.id %}"><i class="fa-regular fa-pen-to-square"></i></a> {% endcomment %}
+                                                            <a href="{% url "reservas:editar_form" lab.id %}"><i class="fa-regular fa-pen-to-square"></i></a>
                                                             <a href="{% url "reservas:cancelar_form" lab.id %}"><i class="fa-regular fa-trash-can"></i></a>
                                                         </td>
                                                     </tr>

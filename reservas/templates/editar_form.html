@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+        {{erro}}
+        <div class="row">
+            <div class="col">
+
+                <form method="POST" action='{% url "reservas:editar" id %}'> {% csrf_token %}
+                    
+                    <select  name="blocos" id='select-htmx'
+                    hx-get="{% url "reservas:editar_modules" %}"
+                    hx-trigger="change"
+                    hx-target="#editar_modules">
+                    
+                    {% comment %} Seleção de bloco {% endcomment %}
+                       <option class='input' selected>Selecione o Bloco</option>
+                       {% for bloco in blocos %}
+                          <option value="{{bloco.id_bloco}}">{{bloco.bloco}}</option>
+                       {% endfor %}
+     
+                    </select>
+                    <div id="editar_modules">
+                        {% include 'partials/editar_modules.html' %}
+                     </div>
+
+                    <button class='btn' >Atualizar</button>
+                </form>
+        </div>
+    </div>
+
+{% endblock content %}
