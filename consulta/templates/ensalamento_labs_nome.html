@@ -7,14 +7,10 @@
         <div class="container text-center">
             <div class="row">
                 <div class="col">
-                    <form action="{% url 'reservas:reservar_laboratorio' %}" method="POST"> {% csrf_token %}
                         <h1 class='tittle text-center text' name="data">Data {{data}}</h1>
                         <h1 class='tittle text-center text'>Laboratórios Reservados</h1>
                         {% if labs_reservados %}
                         <table>
-                            <tr>
-                                <td></td>
-                            </tr>
                             {% for item in labs_reservados %}
                                 <tr>
                                     <td class='text text-center'>{{item}}</td>
@@ -24,8 +20,6 @@
                         {% else %}
                             <p class="text text-center">Não á reservas para esse professor</p>
                         {% endif %}
-                
-                    </form>
                 </div>
             </div>
         </div>
