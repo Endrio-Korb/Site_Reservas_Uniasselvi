@@ -115,15 +115,14 @@ class CancelarForm(GroupRequiredMixin, DeleteView):
 # Editar reserva do banco de dados
 def editar_form(request, pk):
     usuario = request.user
+    id = pk
     if usuario.groups.filter(name='Funcionarios').exists():
         blocos = Blocos.objects.all()
-        lab = pk
         reserva = ReservasLaboratorios.objects.get(pk=pk)
         context =  {'reserva':reserva, 'id': id, 'blocos':blocos}
         return render(request, 'editar_form.html',context)
     else:
-        erro = 'Ocorreu algum problema ou você não tem permissão para acessar essa página'
-        return render(request,'editar_form.html', {'erro':erro})
+        return render(request,'editar_form.html', {'id':id})
 
 
 def editar_modules(request):
