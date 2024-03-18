@@ -27,9 +27,8 @@
 
     {% comment %} Consulta ensalamento por bloco e data{% endcomment %}
     <section>
-        <div class="container">
-            <div class="row">
-                <div class="col">
+        <div class="container-flex-column">
+
                     <h1 class="tittle text-center text">Consulta por Bloco</h1>
                     <form action="{% url 'consulta:ensalamento_labs' %}" method="POST"> {% csrf_token %}
                         <div class="container">
@@ -43,26 +42,22 @@
                         </div>
                         <button type='submit' class='btn'>Consultar</button>
                     </form>  
-                </div>
-            </div>
+
         </div>
     </section>
 
     {% comment %} Consulta por nome do professor e data{% endcomment %}
     <section>
-        <div class="container">
-            <div class="row">
-                <div class="col">
+        <div class="container-flex-column">
+
+            <h1 class="tittle text-center text">Consulta por Nome do Professor</h1>
                     <form action="{% url "consulta:ensalamento_labs_nome" %}" method='POST'> {% csrf_token %}
                         <div class="container">
-                            <h1 class="tittle text-center text">Consulta por Nome do Professor</h1>
                             <input class="input" type="text" name='nome_professor' placeholder='Digite o nome do professor'>
                             <input class="input" type="date" name="data">
-                            <button type='submit' class="btn">Consultar</button>
                         </div>
+                        <button type='submit' class="btn">Consultar</button>
                     </form>
-                </div>
-            </div>
         </div>
 </section>
         
