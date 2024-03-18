@@ -16,7 +16,12 @@
 
   {% comment %} Barra de navegação {% endcomment %}
   <nav class="navbar">
-    <ul>
+    <div class="mobile-menu">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+    <ul class='nav-list'>
       {% comment %} Link para reserva do laboratórios {% endcomment %}
       {% if request.user.groups.all.0.name == 'Funcionarios' %}
         <li>
