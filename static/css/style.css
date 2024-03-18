@@ -73,11 +73,25 @@ body {
     align-items: center;
 }
 
-.container {
+.container-flex-column {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#nova-reserva,
+#reserva-atual {
+    margin: 5px;
+}
+
+#reserva-atual {
+    row-gap: 35px;
+}
+
+
+#btn-update {
+    transform: translate(-110px);
 }
 
 /*  Inputs */
