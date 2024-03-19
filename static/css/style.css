@@ -10,7 +10,7 @@ body {
 }
 
 .text-table {
-    color: white;
+    color: black;
 }
 .tittle,
 .text {
@@ -67,6 +67,11 @@ body {
 }
 
 /* Containers */
+.container {
+    display: block;
+    margin: 10px;
+}
+
 .container-flex {
     display: flex;
     justify-content: center;
@@ -305,7 +310,7 @@ select {
 }
 
 
-/* Tabela */
+/* Tabela
 table, th, td {
     border: 1px solid black;
     color: black;
@@ -350,7 +355,7 @@ table .lista_reservados .lab {
 }
 tr .periodo {
     width: 130px;
-}
+} */
 
 /* Titulos */
 h1 {
