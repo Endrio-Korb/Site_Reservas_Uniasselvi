@@ -186,6 +186,7 @@ i#burguer {
     width: 100vh;
     height: 100vh;
     background-color: rgb(30, 30, 30);
+    transition: 3s ease;
 }
 
 
@@ -476,6 +477,9 @@ h1 {
         font-size: 0.75em;
     }
     .lista_reservados .reserva {
+        width: 100px;
+    }
+    .lista_reservados td {
         width: 100px;
     }
     tr {

@@ -28,13 +28,13 @@
 
                                         {% if labs_reservados %}
                                             <table>
-                                                <tr>
-                                                    <th class='text text-table'>Professor</th>
-                                                    <th class='text text-table'>Laboratório</th>
-                                                    <th class='text text-table'>Periodo</th>
-                                                    <th class="text text-table">Ações</th>
-                                                </tr>
                                                 {% if request.user.groups.all.0.name == 'Funcionarios' %}
+                                                    <tr>
+                                                        <th class='text text-table'>Professor</th>
+                                                        <th class='text text-table'>Laboratório</th>
+                                                        <th class='text text-table'>Periodo</th>
+                                                        <th class="text text-table">Ações</th>
+                                                    </tr>
                                                     {% for lab in labs_reservados %}
                                                     <tr class='lista_reservados'>
                                                         <td class='reserva text-table'>{{lab.professor.nome}}</td>
@@ -47,6 +47,11 @@
                                                     </tr>
                                                     {% endfor %}
                                                 {% else %}
+                                                    <tr>
+                                                        <th class='text text-table'>Professor</th>
+                                                        <th class='text text-table'>Laboratório</th>
+                                                        <th class='text text-table'>Periodo</th>
+                                                    </tr>
                                                     {% for lab in labs_reservados %}
                                                     <tr class='lista_reservados'>
                                                         <td class='text text-table'>{{lab.professor.nome}}</td>

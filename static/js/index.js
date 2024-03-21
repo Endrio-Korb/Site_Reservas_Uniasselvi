@@ -20,11 +20,9 @@ function destaque() {
 function sidebar() {
     const chkSidebar = document.getElementById("chk-burguer")
     const sidebar = document.querySelector('.sidebar')
-    const sideItem = document.querySelector('.side-item')
     chkSidebar.addEventListener('change', () => {
         if (chkSidebar.checked == true) {
             sidebar.classList.toggle('active')
-            sideItem.classList.toggle('active')
         } else {
             sidebar.classList.remove('active')
         }
