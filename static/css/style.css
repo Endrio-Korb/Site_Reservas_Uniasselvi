@@ -67,9 +67,10 @@ body {
 }
 
 /* Containers */
-.container {
-    display: block;
-    margin: 10px;
+.grid-container-table {
+    display: grid;
+    grid-template-areas: "table";
+    grid-template-columns: 1fr;
 }
 
 .container-flex {
@@ -124,10 +125,14 @@ select {
 }
 
 /* Barra de Navegação */
+header {
+    background-color: #262626;
+    width: 100%;
+}
 .navbar {
     height: 8vh;
     margin-bottom: 50px;
-    backdrop-filter: blur(5px);
+    
 }
 
 .navbar li {
@@ -136,13 +141,13 @@ select {
 
 .navbar li a {
     display: inline-block;
-    color: black;
+    color: white;
     text-decoration: none;
     padding: 15px;
 }
 
 .navbar li a:hover {
-    background-color: lightgray;
+    background-color: rgb(128, 128, 128);
 }
 .dropdown-menu {
     position: absolute;
@@ -156,6 +161,7 @@ select {
 
 .dropdown:hover .dropdown-menu {
     display: block;
+    background-color: #262626;
 }
 
 #link_whatsapp {
@@ -233,7 +239,6 @@ select {
     align-items: center;
     justify-content: center;
     color: white;
-
 }
 
 /*  Esconde o quadrado do checkbox */
@@ -289,9 +294,6 @@ select {
 }
 
 /* Altera text indicado de seleção */
-.reservados.principal {
-    font-size: 1.75em;
-}
 .reservados,
 .disponiveis {
     font-size: 1.5em;
@@ -299,7 +301,7 @@ select {
 }
 
 .principal {
-    font-size: 1.75em;
+    font-size: 2em;
     opacity: 100%;
 }
 
@@ -309,8 +311,7 @@ select {
     gap: 5%;
 }
 
-
-/* Tabela
+/* Tabela */
 table, th, td {
     border: 1px solid black;
     color: black;
@@ -355,7 +356,15 @@ table .lista_reservados .lab {
 }
 tr .periodo {
     width: 130px;
-} */
+} 
+
+tr #acoes {
+    max-width: 50px;
+}
+
+tr .icons {
+    font-size: 1.5rem;
+}
 
 /* Titulos */
 h1 {
@@ -381,8 +390,8 @@ h1 {
         border-style: hidden;
         font-size: 1.2em;
     }
-    th, td {
-        font-size: 1em;
+    .text {
+        font-size: 0.75em;
     }
     h1 {
         font-size: 1.25em;
@@ -393,3 +402,35 @@ h1 {
     }
 }
 
+/* samsung 480 e 360
+
+redmi 360
+
+iphone 430 e 400 */
+@media screen and (max-width: 480px){
+
+    /* Mostrando menu de navegação  */
+
+
+    /* Alterando propriedades dos elementos da tabela de lab. reserva e disponiveis */
+    .espaco-painel {
+        width: 650px;
+    }
+    .text {
+        font-size: 0.75em;
+    }
+    tr {
+        max-width: 650px;
+    }
+    td {
+        max-width: 200px;
+    }
+    tr #acoes {
+        max-width: 50px;
+    }
+    
+    tr .icons {
+        font-size: 0.7rem;
+    }
+
+}
