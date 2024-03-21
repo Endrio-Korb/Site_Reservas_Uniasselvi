@@ -28,7 +28,7 @@
     {% comment %} Consulta ensalamento por bloco e data{% endcomment %}
     <section>
         <div class="container-flex-column">
-            <h1 class="tittle text-center text">Consulta por Bloco</h1>
+            <h1 class="tittle text-center">Consulta por Bloco</h1>
             <form action="{% url 'consulta:ensalamento_labs' %}" method="POST"> {% csrf_token %}
                 <div class="container">
                     <input class="input" type="date" id='data' name="data" placeholder='Selecione a data'>
@@ -47,7 +47,7 @@
     {% comment %} Consulta por nome do professor e data{% endcomment %}
     <section>
         <div class="container-flex-column">
-            <h1 class="tittle text-center text">Consulta por Nome do Professor</h1>
+            <h1 class="tittle text-center">Consulta por Nome do Professor</h1>
             <form action="{% url "consulta:ensalamento_labs_nome" %}" method='POST'> {% csrf_token %}
                 <div class="container">
                     <input class="input" type="text" name='nome_professor' placeholder='Digite o nome do professor'>

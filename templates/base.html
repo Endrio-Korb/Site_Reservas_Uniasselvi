@@ -54,13 +54,13 @@
       
     </ul>
     
-    <input type="checkbox" name="" id="chk-burguer">
+    <input type="checkbox" onclick="sidebar()" name="" id="chk-burguer">
 
     <label for="chk-burguer"><i  id="burguer" class="material-symbols-outlined">
       menu</i></label>
 
     <ul class="sidebar">
-      <label for="chk-burguer"><i id="burguer" class="material-symbols-outlined">close</i></label>
+      <label for="chk-burguer"><i id="burguer-close" class="material-symbols-outlined">close</i></label>
      
       {% comment %} Link para reserva do laboratórios {% endcomment %}
       {% if request.user.groups.all.0.name == 'Funcionarios' %}

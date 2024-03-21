@@ -10,21 +10,23 @@ function destaque() {
             reservados.classList.remove('principal')
             disponiveis.classList.toggle('principal')
         } else {
-            reservados.classList.toggle('principal')
+            console.log("else")
             disponiveis.classList.remove('principal')
+            reservados.classList.toggle('principal')
         }
     })
 }
 
-
-const chkSidebar = document.getElementById("chk-burguer")
-const sidebar = document.querySelector('.sidebar')
-const sideItem = document.querySelector('.side-item')
-chkSidebar.addEventListener('change', () => {
-    if (chkSidebar.checked == true) {
-        sidebar.classList.toggle('active')
-        sideItem.classList.toggle('active')
-    } else {
-        sidebar.classList.remove('active')
-    }
-})
+function sidebar() {
+    const chkSidebar = document.getElementById("chk-burguer")
+    const sidebar = document.querySelector('.sidebar')
+    const sideItem = document.querySelector('.side-item')
+    chkSidebar.addEventListener('change', () => {
+        if (chkSidebar.checked == true) {
+            sidebar.classList.toggle('active')
+            sideItem.classList.toggle('active')
+        } else {
+            sidebar.classList.remove('active')
+        }
+    })
+}

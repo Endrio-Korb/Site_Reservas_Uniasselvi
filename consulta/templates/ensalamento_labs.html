@@ -6,15 +6,15 @@
     <div class="container-flex">
         <div class="row">
             <div class="container-flex">
-                <h1 class='tittle text' name="bloco">Bloco {{nome_bloco}}</h1>
-                <h1 class='tittle text' name="data">Data {{data}}</h1>
+                <h1 class='tittle ' name="bloco">Bloco {{nome_bloco}}</h1>
+                <h1 class='tittle ' name="data">Data {{data}}</h1>
             </div>
             {% comment %} Checbox para exibir laboratório reservados ou disponíveis {% endcomment %}
             <div class="seletor">
-                <p class='text reservados principal' id="reservados">Reservados</p>
-                <p class='text disponiveis ' id="disponiveis">Disponiveis</p>
+                <p class='reservados principal' id="reservados">Reservados</p>
+                <p class='disponiveis' id="disponiveis">Disponiveis</p>
             </div>
-            <input type="checkbox" name="checkbox" id="checkbox-field" class="checkbox">
+            <input type="checkbox" name="checkbox" onclick="destaque()" id="checkbox-field" class="checkbox">
             <label for="checkbox-field" class="checkbox-label"></label>
 
             {% comment %} Espaço onde irá aparecer a lista de laboratório reservados e disponveis {% endcomment %}
@@ -37,9 +37,9 @@
                                                 {% if request.user.groups.all.0.name == 'Funcionarios' %}
                                                     {% for lab in labs_reservados %}
                                                     <tr class='lista_reservados'>
-                                                        <td class='text text-table'>{{lab.professor.nome}}</td>
-                                                        <td class='lab text text-table'>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
-                                                        <td class='text text-table'>{{lab.periodo.nome_periodo}}</td>
+                                                        <td class='reserva text-table'>{{lab.professor.nome}}</td>
+                                                        <td class='reserva lab text-table'>{{lab.laboratorio.nome}} {{lab.bloco}}{{lab.laboratorio.numero_sala}}</td>
+                                                        <td class='reserva text-table'>{{lab.periodo.nome_periodo}}</td>
                                                         <td id='acoes'>
                                                             <a class="icons" href="{% url "reservas:editar_form" lab.id %}"><i class="fa-regular fa-pen-to-square"></i></a>
                                                             <a class="icons" href="{% url "reservas:cancelar_form" lab.id %}"><i class="fa-regular fa-trash-can"></i></a>
