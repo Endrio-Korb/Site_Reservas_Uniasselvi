@@ -1,21 +1,22 @@
 
 
-function destaque() {
-    const chk_lab = document.getElementById('checkbox-field')
+
+const chk_lab = document.getElementById('checkbox-field')
+
+if (chk_lab) {
     const reservados = document.querySelector('#reservados')
     const disponiveis = document.querySelector('#disponiveis')
-
     chk_lab.addEventListener('change', () => {
         if (chk_lab.checked == true){
-            reservados.classList.remove('principal')
-            disponiveis.classList.toggle('principal')
+            reservados.classList.remove('destaque')
+            disponiveis.classList.toggle('destaque')
         } else {
-            console.log("else")
-            disponiveis.classList.remove('principal')
-            reservados.classList.toggle('principal')
+            disponiveis.classList.remove('destaque')
+            reservados.classList.toggle('destaque')
         }
     })
 }
+
 
 function sidebar() {
     const chkSidebar = document.getElementById("chk-burguer")

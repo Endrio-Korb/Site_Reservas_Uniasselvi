@@ -345,15 +345,15 @@ i#burguer {
     opacity: 50%;
 }
 
-.principal {
-    font-size: 2em;
-    opacity: 100%;
-}
-
 .seletor {
     display: flex;
     justify-content: center;
     gap: 5%;
+}
+
+.seletor .destaque {
+    font-size: 2em;
+    opacity: 100%;
 }
 
 /* Tabela */
