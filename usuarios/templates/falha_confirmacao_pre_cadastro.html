@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-flex">
+        <div class="row">
+            <p class="text text-center">{{ error_message }}</p>
+        </div>
+
+        <div class="row">
+            <div class="container-flex text-center">
+                {% if pre_registro %}
+                    Caso queira enviar novamente o e-mail de confirmação, <a href="{% url 'usuarios:reenviar_pre_registro' pre_registro.uuid %}">Clique aqui.</a>        
+                {% else %}
+                    <a href="{% url 'usuarios:pre_registro' %}">Clique aqui</a> para refazer o pré-cadastro.    
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

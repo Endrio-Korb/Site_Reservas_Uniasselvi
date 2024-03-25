@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-flex">
+        {% if form.errors %}
+            {% for title, message in form.errors.items %}
+                {{ message }}
+            {% endfor %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        {% endif %}
+        <div class="container-flex">
+            <form action="" method="POST"> {% csrf_token %}
+                <label for="{{ form.email.id_for_label }}" class="form-label">E-mail</label>
+                {{ form.email }}
+                <input type="submit" value="Enviar" class="btn btn-primary w-100">
+            </form>
+        </div>
+    </div>
+{% endblock content %}
