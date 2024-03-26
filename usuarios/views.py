@@ -73,7 +73,7 @@ def registrar(request):
             if not dados_preenchidos(username, email, senha, confirmacao_senha):
                 error_message = "Todos os campos são obrigatórios"
             elif username_ou_email_ja_cadastrado(username, email):
-                error_message = "Existe algum problema no seu cadastro"
+                error_message = "Nome de usuário ou email já cadastrados"
             elif not senha_valida(senha, confirmacao_senha):
                 error_message = "As senhas não conferem."
             if error_message:
