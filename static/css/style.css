@@ -86,6 +86,10 @@ body {
     align-items: center;
 }
 
+.container-message {
+    max-width: 800px;
+}
+
 #nova-reserva,
 #reserva-atual {
     margin: 5px;
