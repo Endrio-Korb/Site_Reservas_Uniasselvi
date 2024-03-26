@@ -30,7 +30,7 @@ def login_user(request):
             return redirect('consulta:consulta')
         else:
             erro = 'Usuário ou senha inválidos'
-            return render(request, 'authenticate/login.html', {'erro':erro})
+            return render(request, 'registration/login.html', {'erro':erro})
     else:
         return render(request,'authenticate/login.html')
 
