@@ -1,26 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-    <div class="container-flex-coloumn">
-        <div class="container-flex">
-            {% if error_message %}
-                <p class="text text-center">{{ error_message }}</p>
+    <div class="container-flex-column">
+        {% if error_message %}
+            <div class="container-flex">
+                <p class="text text-center message">{{ error_message }}</p>
             </div>
-            {% endif %}
-        </div>
+        {% endif %}
         <div class="container-flex">
-            <form action="{% url 'usuarios:registrar' %}" method="POST"> {% csrf_token %}
+            <form class="login-form " action="{% url 'usuarios:registrar' %}" method="POST">
+                {% csrf_token %}
                 <div class="container">
-                    <input type="text" name="username" id="username" class="input" placeholder="Digite seu usuário" required>
+                    <input type="text" name="username" id="username" class="input form-control" placeholder="Digite seu usuário" required>
                 </div>
                 <div class="container">
-                    <input type="email" name="email" id="email" class="input" value={{ pre_registro.email }}>
+                    <input type="email" name="email" id="email" class="input form-control" value={{ pre_registro.email }}>
                 </div>
                 <div class="container">
-                    <input type="password" name="password1" id="password1" class="input" placeholder="Digite sua senha" required>
+                    <input type="password" name="password1" id="password1" class="input form-control" placeholder="Digite sua senha" required>
                 </div>
                 <div class="container">
-                    <input type="password" name="password2" id="password2" class="input" placeholder="Confirme a sua senha" required>
+                    <input type="password" name="password2" id="password2" class="input form-control" placeholder="Confirme a sua senha" required>
                 </div>
 
                 <input type="hidden" name="uuid_pre_registro" value={{ pre_registro.uuid }}>
