@@ -178,10 +178,12 @@ i#burguer {
     text-decoration: none;
     padding: 15px;
     font-size: 1.75em;
+    border-radius: 10px;
 }
 
 .nav .sidebar li a:hover {
-    background-color: lightgray;
+    background-color: rgb(78, 78, 78);
+    border-radius: 10px;
 }
 
 .nav .sidebar.active {
@@ -207,7 +209,8 @@ i#burguer {
 
 .dropdown:hover .dropdown-menu {
     display: block;
-    background-color: #262626;
+    background-color: #949494;
+    border-radius: 10px;
 }
 
 
@@ -498,5 +501,12 @@ h1 {
     
     tr .icons {
         font-size: 0.7rem;
+    }
+    .container-message {
+        max-width: 350px;
+    }
+
+    .message {
+        font-size: 1em;
     }
 }
